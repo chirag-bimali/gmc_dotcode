@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Events - Student Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#fdf8f8",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#cac6c4",
+                    "gray-300": "#D4D4D4",
+                    "info": "#3B82F6",
+                    "surface": "#fdf8f8",
+                    "inverse-primary": "#c8c6c5",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-secondary-container": "#646464",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "on-primary-fixed-variant": "#474746",
+                    "inverse-on-surface": "#f4f0ef",
+                    "surface-container-high": "#ebe7e6",
+                    "error": "#EF4444",
+                    "gray-100": "#F5F5F5",
+                    "error-container": "#ffdad6",
+                    "success": "#10B981",
+                    "tertiary-fixed": "#e6e2df",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "tertiary-container": "#1c1b1a",
+                    "secondary-container": "#e3e2e2",
+                    "on-error": "#ffffff",
+                    "gray-50": "#FAFAFA",
+                    "inverse-surface": "#313030",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "primary-fixed": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#484645",
+                    "on-primary-container": "#858383",
+                    "gray-200": "#E5E5E5",
+                    "secondary": "#5e5e5e",
+                    "secondary-fixed": "#e3e2e2",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-container-low": "#f7f3f2",
+                    "primary-container": "#1c1b1b",
+                    "primary": "#000000",
+                    "gray-400": "#A3A3A3",
+                    "surface-tint": "#5f5e5e",
+                    "surface-dim": "#ddd9d8",
+                    "outline-variant": "#c4c7c7",
+                    "on-tertiary-fixed": "#1c1b1a",
+                    "warning": "#F59E0B",
+                    "on-surface-variant": "#444748",
+                    "gray-800": "#262626",
+                    "surface-container": "#f1edec",
+                    "surface-bright": "#fdf8f8",
+                    "on-background": "#1c1b1b",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#000000",
+                    "surface-variant": "#e5e2e1",
+                    "outline": "#747878",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#868382",
+                    "on-secondary-fixed-variant": "#464747"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "lg": "24px",
+                    "reading-width": "700px",
+                    "max-width": "1280px",
+                    "xl": "32px",
+                    "3xl": "64px",
+                    "4xl": "96px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "headline-h4": ["Inter"],
+                    "display": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-h3": ["Inter"],
+                    "headline-h1": ["Inter"],
+                    "headline-h2": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-h1-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-h4": ["20px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "headline-h3": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-h1": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-h2": ["30px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-h1-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .active-tab {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #fdf8f8;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E5E5E5;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex h-screen fixed left-0 top-0 w-64 flex-col p-md gap-sm bg-gray-50 border-r border-gray-200 z-50">
+<div class="flex items-center gap-md px-sm py-lg">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">school</span>
+</div>
+<div>
+<h1 class="font-headline-h3 text-headline-h3 text-primary">Student Hub</h1>
+<p class="text-secondary font-caption text-caption">Academic Portal</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-xs mt-lg">
+<a class="flex items-center gap-md px-md py-sm text-secondary hover:bg-gray-100 transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm text-secondary hover:bg-gray-100 transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">groups</span>
+                Clubs
+            </a>
+<a class="flex items-center gap-md px-md py-sm bg-gray-100 text-primary font-semibold rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined active-tab" style="font-variation-settings: 'FILL' 1;">event</span>
+                Events
+            </a>
+<a class="flex items-center gap-md px-md py-sm text-secondary hover:bg-gray-100 transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+                Resources
+            </a>
+<a class="flex items-center gap-md px-md py-sm text-secondary hover:bg-gray-100 transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="p-md bg-white border border-gray-200 rounded-xl mb-md">
+<p class="text-label-sm font-label-sm text-secondary">Pro Tip</p>
+<p class="text-caption font-caption text-on-surface-variant mt-xs">Sync events to your Google Calendar for seamless scheduling.</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="w-full sticky top-0 z-40 bg-surface border-b border-gray-200 flex justify-between items-center h-14 px-md">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-sm">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">search</span>
+<input class="w-full bg-gray-100 border-none rounded-full h-9 pl-10 pr-4 text-body-md font-body-md focus:ring-1 focus:ring-primary" placeholder="Search events..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-9 h-9 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-gray-200">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-quality portrait of a friendly young university student with a bright smile, wearing a casual grey sweatshirt, set against a blurred academic background of a library with soft natural lighting and a minimalist, clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE0FcMvLAG4ZWbq3kSUiL5MvTICMvWfS65vVB59wfKZkelGuVijaCZ7yvWAqI7izPiBwt3yshgLp1Go42qBf-1EJ9qP7dmm56C5AyNtX3IPFINT8EWf7Y4fnr-UULHuXBdgxbpdwbfAOTUMZimAWkhQNbCGzDLstJCIS2q9slrQihfqJ64O4CokZ9hA0k-7AYSP25L8UzVU6RJ8QSt89uhw0IQoyGC91wLtiVXLTqrTWkyvx-urpW1vc_jH824R5Gvl1tsSTWowNc"/>
+</div>
+</div>
+</header>
+<!-- Page Header -->
+<section class="px-lg pt-2xl pb-md">
+<div class="max-w-max-width mx-auto">
+<h2 class="font-headline-h1 text-headline-h1 text-primary">Events</h2>
+<p class="text-body-lg font-body-lg text-secondary mt-xs">Upcoming events from your clubs and campus.</p>
+</div>
+</section>
+<!-- Filter & Toolbar -->
+<section class="px-lg mb-xl">
+<div class="max-w-max-width mx-auto flex flex-col md:flex-row md:items-center justify-between gap-md border-b border-gray-100 pb-md">
+<!-- Tabs/Chips -->
+<div class="flex items-center gap-xs overflow-x-auto pb-sm md:pb-0 no-scrollbar">
+<button class="px-md py-xs bg-primary text-white rounded-full font-label-sm text-label-sm whitespace-nowrap">All Events</button>
+<button class="px-md py-xs bg-white border border-gray-200 text-secondary hover:bg-gray-50 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors">My RSVPs</button>
+<button class="px-md py-xs bg-white border border-gray-200 text-secondary hover:bg-gray-50 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors">This Week</button>
+<button class="px-md py-xs bg-white border border-gray-200 text-secondary hover:bg-gray-50 rounded-full font-label-sm text-label-sm whitespace-nowrap transition-colors">This Month</button>
+</div>
+<!-- Sorting & View Controls -->
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm">
+<span class="text-caption font-caption text-secondary">Sort by:</span>
+<select class="bg-transparent border-none text-label-sm font-label-sm text-primary focus:ring-0 cursor-pointer">
+<option>Soonest First</option>
+<option>Latest First</option>
+<option>Most Popular</option>
+</select>
+</div>
+<div class="h-4 w-px bg-gray-200"></div>
+<div class="flex items-center gap-xs bg-gray-100 p-1 rounded-lg">
+<button class="p-1 bg-white shadow-sm rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1 text-secondary hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[20px]">list</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Event Grid -->
+<section class="px-lg pb-4xl">
+<div class="max-w-max-width mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+<!-- Event Card 1 -->
+<div class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A vibrant tech event scene featuring college students gathered around laptops in a modern, industrial-style collaborative space with neon blue and white lighting. Large screens in the background show code and event branding. The atmosphere is energetic and professional with a minimalist, high-tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3yxGtyp8341g0YmJimAZeRfaUSnEVNOdFRWRo7u7aUaevIFc6sOkeTWbwLFzmVM1EgLBTD4kIv6Ro-euInZJeMH7uo-_W_CLzo8gZ8UXCqn3Da1AeG7RPvzcDJMi90SgMBXdSUWiPO5y2OrTcGUimhOr1EYHroKS-7OfqyAmHPSXtqXRIU7ABBIXFPxFcCyJG5l9zLwZPRI49invBDTqteuu3zqu29DJyIeOmxJWFUJd-fRHrg8bOKZCqdYrGY-fm99o_DD4j32w"/>
+<div class="absolute top-md right-md bg-primary text-white px-md py-sm rounded-lg text-center leading-tight">
+<span class="block font-bold text-headline-h4">24</span>
+<span class="block font-label-sm text-[10px] uppercase tracking-wider">OCT</span>
+</div>
+</div>
+<div class="p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">code</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Coding Club</span>
+</div>
+<h3 class="font-headline-h4 text-headline-h4 text-primary group-hover:text-primary transition-colors">Winter Hackathon 2024</h3>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-md font-body-md">Main Hall, Building A</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md font-body-md">10:00 AM - 6:00 PM</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md font-body-md">128 going</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-md">
+<button class="bg-primary text-white py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-800 transition-colors">Going</button>
+<button class="bg-gray-100 text-secondary py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-200 transition-colors">Interested</button>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="An elegant outdoor garden networking event during the golden hour. Students in smart casual attire are conversing in a beautifully landscaped courtyard with fairy lights and modern white outdoor furniture. The lighting is warm and inviting, maintaining a professional yet relaxed minimalist corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqvvSydxvwU-8nbDMPXf7z2-yRnJCiWD0wNmVm7km-qX_a4qTccRaaHMd9RQXGVjnnrb09KWr7U3anPH0toAJdPjGQeKdSa5H6F5ahtimxWcvYwLIzz85TurMupv-xYyaq8ZOp0mmO8tP4NoK8lTlRIedkNmF8qzJgJe0Nuf6sDmMrRE_p75lm6plvdzDXNMpRz0-4CtcTlNt4A84j_tpE4rVhCvdcan3vLrZu-D-0UUo-NWO5qcE_o-IUfxEq3VRVSdvz8LXL4I0"/>
+<div class="absolute top-md right-md bg-primary text-white px-md py-sm rounded-lg text-center leading-tight">
+<span class="block font-bold text-headline-h4">28</span>
+<span class="block font-label-sm text-[10px] uppercase tracking-wider">OCT</span>
+</div>
+</div>
+<div class="p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">brush</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Creative Arts Society</span>
+</div>
+<h3 class="font-headline-h4 text-headline-h4 text-primary">Digital Design Expo</h3>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-md font-body-md">Art Gallery, Level 2</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md font-body-md">2:00 PM - 5:00 PM</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md font-body-md">64 going</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-md">
+<button class="bg-primary text-white py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-800 transition-colors">Going</button>
+<button class="bg-gray-100 text-secondary py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-200 transition-colors">Interested</button>
+</div>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A focused academic seminar room with tiered seating. A speaker is presenting on a large screen with clean, professional typography slides. Students are taking notes on tablets and laptops. The room has large windows, plenty of natural light, and a strict grayscale color palette of whites, grays, and blacks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCARGW3O13TExR3w6sov0kWJeOcs3ckRCfQrGtYwE1gnws00A8KwLDPt3CpX0zgqMPQbP7-kRYiZXj3om2OZsVHdLRrGlk-kfAumIbB40de-FwRx6oZ65lWIEaaY4C8_lqdprvogKTnQz9k4kyFHq4oPq0QR0yH-0VWRA6NNOfg72IxUeF4WjbRKe-G2xKLH2HfBeP-cgY5Pjm3gWH022YC1tFRmk_xS2msuNvuKq34xxqKq6RO4yEtg9lfJBfBlK8YqL-nb31xJe4"/>
+<div class="absolute top-md right-md bg-primary text-white px-md py-sm rounded-lg text-center leading-tight">
+<span class="block font-bold text-headline-h4">02</span>
+<span class="block font-label-sm text-[10px] uppercase tracking-wider">NOV</span>
+</div>
+</div>
+<div class="p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Debate League</span>
+</div>
+<h3 class="font-headline-h4 text-headline-h4 text-primary">Inter-Varsity Debate</h3>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-md font-body-md">Lecture Theatre 4</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md font-body-md">5:30 PM - 8:00 PM</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md font-body-md">210 going</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-md">
+<button class="bg-primary text-white py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-800 transition-colors">Going</button>
+<button class="bg-gray-100 text-secondary py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-200 transition-colors">Interested</button>
+</div>
+</div>
+</div>
+<!-- Event Card 4 -->
+<div class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A clean and modern university basketball court with bright overhead stadium lighting. The atmosphere is energetic but the style remains minimalist and corporate, featuring polished wooden floors and black and white architectural elements. A group of students is visible in a team huddle, creating a sense of community and action." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv5jorA5h6rIIYkvrKtivbAWft1rDrlMTvSsBa1U3TgeYhuqRFPW8Zs9WVYqRzIbKAXRYcwMT5heyTiqVRzAS7s-QyIT394W7iuyrQG_3HokIXcuazxxacry1yDykOXlXOAAvN2FhZfm9u-CA7XFk15EqRNmX_JuVIUJqijLhX9C1sFYT7_37emS2B9q6rwcVyD0snYuIuZGtz2YQUEMY5YnK1QQxthKVdDZmfAb4OTxtkLEo6tYtoAHwhjRqGNWhU6NXW8G6Iylc"/>
+<div class="absolute top-md right-md bg-primary text-white px-md py-sm rounded-lg text-center leading-tight">
+<span class="block font-bold text-headline-h4">05</span>
+<span class="block font-label-sm text-[10px] uppercase tracking-wider">NOV</span>
+</div>
+</div>
+<div class="p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">sports_basketball</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Sports Council</span>
+</div>
+<h3 class="font-headline-h4 text-headline-h4 text-primary">All-Campus Finals</h3>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-md font-body-md">University Sports Center</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md font-body-md">6:00 PM - 9:00 PM</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md font-body-md">450 going</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-md">
+<button class="bg-primary text-white py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-800 transition-colors">Going</button>
+<button class="bg-gray-100 text-secondary py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-200 transition-colors">Interested</button>
+</div>
+</div>
+</div>
+<!-- Event Card 5 -->
+<div class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A modern, high-end university cafeteria space during a social mixer. The design is sleek with white marble tables, minimalist black chairs, and soft, indirect warm lighting. Students are interacting in small groups, with high-quality catering displays visible. The focus is on clean lines and a professional social environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6ZAR7OJuQ0k256y3KTMz3GjW8T67ry5Co7-q-_M36kYOPIW0ZAQist89E_Ic6yVhcYWI43_UAywYQxPA7N98MYPHReNdN5FzirxpDo75zomGB0phASEg2S6TKiq0OmAyyrJhF9lxRAiN4wrdSy3pstLQoL_2O3AyDYUDaXg0HbxIT-5CSSzcT_zZ7_WqvCCkIQQ-wDtNoTarojjmRbIuk-xxLixwMcwkuBNuM8XFWY7eKo4Lp8bbqCKqY_1IK2qp3miy2tGX8Qoc"/>
+<div class="absolute top-md right-md bg-primary text-white px-md py-sm rounded-lg text-center leading-tight">
+<span class="block font-bold text-headline-h4">12</span>
+<span class="block font-label-sm text-[10px] uppercase tracking-wider">NOV</span>
+</div>
+</div>
+<div class="p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">restaurant</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Culinary Club</span>
+</div>
+<h3 class="font-headline-h4 text-headline-h4 text-primary">Taste of Campus</h3>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-md font-body-md">Student Union Plaza</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md font-body-md">12:00 PM - 3:00 PM</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md font-body-md">89 going</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-md">
+<button class="bg-primary text-white py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-800 transition-colors">Going</button>
+<button class="bg-gray-100 text-secondary py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-200 transition-colors">Interested</button>
+</div>
+</div>
+</div>
+<!-- Event Card 6 -->
+<div class="group bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover" data-alt="A tranquil, minimalist mindfulness and meditation session in a sun-drenched, white-walled studio. The floor is light wood, and students are sitting on gray cushions in a circle. The lighting is ethereal and soft, creating a calm, academic focus on wellness. The aesthetic is extremely clean and airy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2KaD6ulq1uxATOlW2RiZaZVGKIA23N6F8_Y8Behxj4k6XGe5D_Yg_beDFEA1v4uKvlV8I2xLE0o27x44t1Q-xPRIm-N7YotcwRTpU0LtJpOlNf-EgfzG06OMVR1IXg1d5Y90wut5_LTW7pIDPLXff1qg9W5fqArqT0I3kx9BfZ_O7OZOAWrWbdMZHgjpUO1ka9zrDo_1QBeWG6o47k18QtIxsETNjD1wPx7QqekYY0j8NSt2fO1oB3TUW0WUsYMlY4axd2EUQWoQ"/>
+<div class="absolute top-md right-md bg-primary text-white px-md py-sm rounded-lg text-center leading-tight">
+<span class="block font-bold text-headline-h4">15</span>
+<span class="block font-label-sm text-[10px] uppercase tracking-wider">NOV</span>
+</div>
+</div>
+<div class="p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">spa</span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary">Wellness Center</span>
+</div>
+<h3 class="font-headline-h4 text-headline-h4 text-primary">Mindful Mornings</h3>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-md font-body-md">Zen Room, Building C</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md font-body-md">8:00 AM - 9:00 AM</span>
+</div>
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md font-body-md">24 going</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-md">
+<button class="bg-primary text-white py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-800 transition-colors">Going</button>
+<button class="bg-gray-100 text-secondary py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-200 transition-colors">Interested</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="mt-auto w-full py-lg bg-surface border-t border-gray-200">
+<div class="max-w-reading-width mx-auto flex flex-col md:flex-row justify-between items-center px-lg gap-md">
+<p class="font-caption text-caption text-secondary">© 2024 Student Hub Academic Portal</p>
+<div class="flex gap-lg">
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Terms</a>
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Mobile Navigation Bar (Bottom) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white border-t border-gray-200 flex justify-around items-center z-50">
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="text-[10px] font-label-sm uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined text-[24px]">groups</span>
+<span class="text-[10px] font-label-sm uppercase">Clubs</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-[24px] active-tab" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="text-[10px] font-label-sm uppercase font-bold">Events</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined text-[24px]">menu_book</span>
+<span class="text-[10px] font-label-sm uppercase">Study</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-label-sm uppercase">More</span>
+</a>
+</nav>
+<script>
+        // Simple Micro-interaction for RSVP buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent === 'Going' || button.textContent === 'Interested') {
+                button.addEventListener('click', function() {
+                    const originalText = this.textContent;
+                    if (this.textContent === 'Going') {
+                        this.classList.toggle('bg-success');
+                        this.textContent = this.classList.contains('bg-success') ? 'Confirmed' : 'Going';
+                    } else if (this.textContent === 'Interested') {
+                        this.classList.toggle('bg-info');
+                        this.classList.toggle('text-white');
+                        this.textContent = this.classList.contains('bg-info') ? 'Added' : 'Interested';
+                    }
+                });
+            }
+        });
+
+        // Search Interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+            searchInput.parentElement.classList.add('transition-transform');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+</body></html>

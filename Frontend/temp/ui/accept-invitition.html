@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Accept Invitation | Student Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Style Guidance & Tailwind Config Integration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1c1b1b",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "gray-100": "#F5F5F5",
+                    "outline": "#747878",
+                    "tertiary-fixed": "#e6e2df",
+                    "inverse-on-surface": "#f4f0ef",
+                    "info": "#3B82F6",
+                    "tertiary-fixed-dim": "#cac6c4",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "gray-50": "#FAFAFA",
+                    "on-primary-fixed": "#1c1b1b",
+                    "primary": "#000000",
+                    "gray-400": "#A3A3A3",
+                    "surface-variant": "#e5e2e1",
+                    "on-tertiary-fixed": "#1c1b1a",
+                    "on-background": "#1c1b1b",
+                    "primary-fixed": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#ddd9d8",
+                    "success": "#10B981",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "primary-container": "#1c1b1b",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "background": "#fdf8f8",
+                    "surface-bright": "#fdf8f8",
+                    "surface": "#fdf8f8",
+                    "secondary-container": "#e3e2e2",
+                    "on-secondary-fixed-variant": "#464747",
+                    "on-secondary-container": "#646464",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c4c7c7",
+                    "gray-800": "#262626",
+                    "error": "#EF4444",
+                    "secondary-fixed": "#e3e2e2",
+                    "surface-container-high": "#ebe7e6",
+                    "tertiary-container": "#1c1b1a",
+                    "inverse-surface": "#313030",
+                    "gray-300": "#D4D4D4",
+                    "on-tertiary-fixed-variant": "#484645",
+                    "surface-tint": "#5f5e5e",
+                    "on-primary-container": "#858383",
+                    "surface-container-low": "#f7f3f2",
+                    "surface-container": "#f1edec",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-tertiary-container": "#868382",
+                    "gray-200": "#E5E5E5",
+                    "tertiary": "#000000",
+                    "on-primary-fixed-variant": "#474746",
+                    "warning": "#F59E0B",
+                    "inverse-primary": "#c8c6c5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#444748",
+                    "secondary": "#5e5e5e",
+                    "on-secondary-fixed": "#1b1c1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "reading-width": "700px",
+                    "md": "16px",
+                    "4xl": "96px",
+                    "lg": "24px",
+                    "max-width": "1280px",
+                    "2xl": "48px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-h1": ["Inter"],
+                    "headline-h2": ["Inter"],
+                    "display": ["Inter"],
+                    "headline-h3": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-h1-mobile": ["Inter"],
+                    "headline-h4": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-h1": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-h2": ["30px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-h3": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-h1-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-h4": ["20px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA; /* Gray 50 as per style guidance */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom micro-interactions */
+        .btn-hover-effect {
+            transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+        }
+        .btn-hover-effect:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-md md:p-lg text-on-surface">
+<!-- Atmospheric subtle background pattern -->
+<div aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none opacity-[0.03]">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<main class="relative z-10 w-full max-w-[480px]">
+<!-- Centered Invitation Card -->
+<div class="bg-white border border-gray-200 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] p-lg md:p-xl flex flex-col items-center text-center">
+<!-- App Logo (Immutable Identity from JSON guidance) -->
+<div class="mb-xl flex flex-col items-center gap-sm">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<h1 class="font-headline-h3 text-headline-h3 font-bold text-primary">Student Hub</h1>
+</div>
+<!-- Content Header -->
+<div class="space-y-sm mb-xl">
+<h2 class="font-headline-h2 text-headline-h2 text-gray-900 tracking-tight">You've been invited!</h2>
+<p class="font-body-lg text-body-lg text-secondary">A new academic journey awaits you.</p>
+</div>
+<!-- University Identity Card (Bento Style Sub-Element) -->
+<div class="w-full bg-gray-50 border border-gray-200 rounded-lg p-lg mb-xl text-left flex items-center gap-lg">
+<div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-gray-200 border-2 border-white shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A professional architectural photograph of a prestigious university clock tower against a clear blue sky, emphasizing academic heritage and excellence. The image is clean, high-contrast, and fits a minimalist light-mode aesthetic with neutral stone colors and sharp lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcdLAc1EclfBXn3g4oDwIo0-qlSC9yrZprw6XvqUZxy0rQ1g6c5EHvJ4W_1wEOSGt7fd49hSaDDPTyCatZ-ifawA3pMI0cBXzFsBgdOZxXKnS-CpFkHjy7-orsGDA3CEwcu_ff9GxbAmgQeun4rk5GBcXbqLwndUWAxBqj7v_3SJf_GeoPgEej2EjMohfhrzR3TpWrujBn9SflxoykNgMP6DLZuNYZmFgUmdMvBKv6qufNPbSXGFgR50dRBSXkfsOLxv_VHEKsf6w"/>
+</div>
+<div>
+<h3 class="font-headline-h4 text-headline-h4 text-gray-900">State University</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Academic Portal Access</p>
+</div>
+</div>
+<!-- Invitation Context -->
+<div class="w-full space-y-md mb-xl text-center">
+<p class="font-body-md text-body-md text-gray-600 leading-relaxed">
+                    You've been invited to join <span class="font-semibold text-primary">State University</span> on Student Hub. Connect with peers, access course materials, and manage your academic life.
+                </p>
+<div class="inline-flex items-center gap-xs px-md py-sm bg-gray-100 rounded-full">
+<span class="material-symbols-outlined text-[18px] text-gray-400">mail</span>
+<span class="font-label-sm text-label-sm text-gray-700">alex.smith@university.edu</span>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="btn-hover-effect w-full bg-primary text-on-primary py-md px-xl rounded-lg font-label-sm text-[16px] font-semibold flex items-center justify-center gap-sm shadow-sm hover:bg-gray-800 focus:ring-4 focus:ring-gray-200 transition-all">
+                Accept Invitation
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Secondary Action -->
+<div class="mt-xl">
+<p class="font-body-md text-body-md text-gray-500">
+                    Not interested? 
+                    <button class="text-primary font-medium hover:underline ml-1">You can ignore this invitation.</button>
+</p>
+</div>
+</div>
+<!-- Footer Links / Compliance -->
+<footer class="mt-xl text-center flex flex-col gap-sm">
+<div class="flex justify-center gap-xl">
+<a class="font-label-sm text-label-sm text-gray-400 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-gray-400 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-gray-400 hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+<p class="font-caption text-caption text-gray-400">© 2024 Student Hub. All rights reserved.</p>
+</footer>
+</main>
+<script>
+        // Simple micro-interaction for the button
+        const mainButton = document.querySelector('button.bg-primary');
+        mainButton.addEventListener('click', () => {
+            mainButton.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+            `;
+            setTimeout(() => {
+                window.location.reload(); // Simulate redirect
+            }, 1500);
+        });
+    </script>
+</body></html>
