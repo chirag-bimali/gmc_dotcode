@@ -1,46 +1,59 @@
-# Student Hub - Phase 1 MVP
+# Student Hub — Phase 1 MVP
 
-> **Goal:** Build the smallest useful version of Student Hub that allows students to discover clubs, join communities, communicate, and participate in events.
+> **Version:** 1.0
+>
+> **Objective:** Build a university-managed community platform where verified students can discover clubs, participate in communities, and attend events.
 
 ---
 
 # 1. Vision
 
-Student Hub is a platform where students from a university can:
+Student Hub is a centralized platform for universities to digitally manage student communities, clubs, and campus events.
 
-- Discover clubs and communities
-- Join clubs
-- Meet like-minded people
-- Participate in events
-- Share knowledge and updates
+Unlike public social media, every student is verified through their university before gaining access.
 
 ---
 
 # 2. MVP Goals
 
-The MVP should answer these questions:
+The Phase 1 MVP aims to validate the following:
 
-- Can students easily discover clubs?
-- Will students actively join communities?
-- Will clubs use the platform instead of existing tools?
-- Can universities manage student clubs digitally?
+- Universities can digitally manage students and clubs.
+- Students actively participate in communities.
+- Clubs use Student Hub to communicate with members.
+- Students discover events and join communities.
 
 ---
 
-# 3. User Roles
+# 3. Core Principles
 
-## 3.1 Student
+- University-managed platform
+- Verified student identities
+- Community-first
+- Simple and easy to use
+- Mobile-friendly
+- Secure by default
+
+---
+
+# 4. User Roles
+
+## 4.1 Student
+
+Students **cannot create accounts directly**.
+
+A university must invite them before they can access the platform.
 
 ### Permissions
 
-- Register/Login
-- Create profile
-- Browse universities
+- Complete profile after invitation
+- Login
+- View and edit profile
+- Discover clubs
 - Join clubs
 - Leave clubs
-- View club feeds
 - Create posts
-- Comment on posts
+- Comment
 - Like posts
 - RSVP to events
 - Receive notifications
@@ -48,84 +61,154 @@ The MVP should answer these questions:
 
 ---
 
-## 3.2 Club Admin
+## 4.2 Club Admin
 
-Everything a Student can do plus:
+Everything a Student can do, plus:
 
-- Create club
-- Edit club
-- Delete club
+- Manage club
+- Edit club information
+- Manage club members
 - Approve join requests (Private Clubs)
-- Remove members
 - Create events
 - Edit events
 - Delete events
 - Pin important posts
-- Moderate club content
+- Moderate club posts
 
 ---
 
-## 3.3 University Admin
+## 4.3 University Admin
 
-Everything a Club Admin can do plus:
+Everything a Club Admin can do, plus:
 
+### Student Management
+
+- Invite students
+- Bulk import students
+- Resend invitations
+- Disable student accounts
+- Remove students
+- Reset passwords
+
+### Club Management
+
+- Create clubs
 - Verify clubs
-- Manage users
-- Suspend clubs
-- Remove inappropriate content
+- Archive clubs
+- Assign Club Admins
+
+### Platform Management
+
+- Manage reports
+- Moderate content
 - View analytics
-- Review reports
 
 ---
 
-# 4. Authentication
+# 5. Student Onboarding
 
-## Features
+## Registration Flow
 
-- Email Registration
-- Email Login
-- Password Reset
-- Email Verification
+```text
+Student
+      │
+      ▼
+Provides University Email
+(or University registers them)
+
+      │
+      ▼
+University Admin
+creates invitation
+
+      │
+      ▼
+Invitation Email Sent
+
+      │
+      ▼
+Student Opens Invitation
+
+      │
+      ▼
+Creates Password
+
+      │
+      ▼
+Completes Profile
+
+      │
+      ▼
+Account Activated
+```
+
+---
+
+# 6. Authentication
+
+## Supported
+
+- Email + Password
 
 Future
 
 - Google Login
 - University SSO
+- Microsoft Entra ID
 
 ---
 
-# 5. User Profile
+# 7. Student Account States
 
-## Fields
+| Status | Description |
+|----------|-------------|
+| Invited | Invitation sent |
+| Pending Profile | Student has not completed profile |
+| Active | Student can use the platform |
+| Disabled | Login disabled |
 
-- Full Name
-- Avatar
-- Bio
+---
+
+# 8. User Profile
+
+## University Managed
+
 - University
+- Student Email
+- Student ID (optional)
 - Faculty
 - Department
 - Batch
-- Skills
+
+## Student Managedj
+
+- Profile Picture
+- Bio
 - Interests
+- Skills
 - Social Links
+- Password
 
 ---
 
-# 6. University
+# 9. University
+
+Each Student belongs to one University.
 
 ## Fields
 
 - Name
 - Logo
 - Description
+- Website
 - Total Students
 - Total Clubs
 
-Each student belongs to one university.
-
 ---
 
-# 7. Clubs
+# 10. Clubs
+
+Students can discover clubs inside their university.
 
 ## Fields
 
@@ -143,100 +226,104 @@ Each student belongs to one university.
 ## Club Categories
 
 - Technology
-- AI
 - Programming
+- AI
+- Robotics
+- Entrepreneurship
 - Football
 - Basketball
 - Swimming
-- Book Club
-- Robotics
-- Entrepreneurship
 - Photography
-- Gaming
+- Book Club
+- Debate
 - Music
 - Dance
+- Gaming
 - Hiking
-- Debate
+- Others
 
 ---
 
-## Privacy Types
+## Privacy
 
 - Public
 - Private
 
 ---
 
-# 8. Membership
+# 11. Membership
 
-Student can
+## Public Club
 
-- Join Club
-- Leave Club
+Student clicks **Join**.
 
-Private Club
-
-- Send Join Request
-- Club Admin Approves
+Member immediately.
 
 ---
 
-# 9. Feed
+## Private Club
 
-Every club has its own feed.
+Student requests membership.
+
+Club Admin approves.
+
+---
+
+# 12. Club Feed
+
+Each club has its own feed.
 
 Students can:
 
-- Create Post
-- Edit Post
-- Delete Own Post
-- Like Posts
+- Create posts
+- Edit own posts
+- Delete own posts
 - Comment
-- Share Link
+- Like
 
 ---
 
-# 10. Posts
+# 13. Posts
 
-## Types
+## Supported Types
 
 - Text
 - Image
-- Poll
 - Announcement
+- Poll
+
+---
 
 ## Fields
 
 - Title
-- Description
+- Content
 - Attachments
-- Created By
+- Author
 - Created Date
 
 ---
 
-# 11. Comments
+# 14. Comments
 
 Support
 
 - Comment
 - Reply
 
-Future
-
-- Unlimited Nested Replies
+Nested replies can be extended later.
 
 ---
 
-# 12. Reactions
+# 15. Reactions
 
-Only one reaction for MVP.
+Only one reaction in MVP.
 
 - 👍 Like
 
 ---
 
-# 13. Events
+# 16. Events
 
 Club Admins can create events.
 
@@ -252,7 +339,7 @@ Club Admins can create events.
 
 ---
 
-# 14. RSVP
+# 17. RSVP
 
 Students can respond
 
@@ -262,21 +349,21 @@ Students can respond
 
 ---
 
-# 15. Notifications
+# 18. Notifications
 
-Notify when
+Students receive notifications for
 
-- Someone liked your post
-- Someone commented
-- New club event
-- Join request approved
-- Club announcement
+- Likes
+- Comments
+- New Events
+- Club Announcements
+- Membership Approval
 
 ---
 
-# 16. Search
+# 19. Search
 
-Search
+Students can search
 
 - Clubs
 - Students
@@ -284,176 +371,428 @@ Search
 
 ---
 
-# 17. Discover
+# 20. Discover
 
-Sections
+Display
 
 - Popular Clubs
 - New Clubs
-- Trending Clubs
 - Upcoming Events
+- Suggested Clubs
 
 ---
 
-# 18. Reporting
+# 21. Reporting
 
 Students can report
 
 - Spam
 - Harassment
 - Abuse
-- Fake Content
+- Inappropriate Content
 
 University Admin reviews reports.
 
 ---
 
-# 19. Analytics
-
-## Club Dashboard
-
-- Members
-- Posts
-- Events
-- Engagement
-- Growth
+# 22. Analytics
 
 ## University Dashboard
 
 - Total Students
+- Active Students
 - Total Clubs
-- Active Users
 - Total Posts
 - Total Events
+- Weekly Active Users
 
 ---
 
-# 20. Database Design
+## Club Dashboard
 
-## User
+- Total Members
+- Active Members
+- Posts
+- Events
+- Engagement
+
+---
+
+# 23. Database
+
+## Tables
+
+### universities
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| name | VARCHAR | NOT NULL |
+| logo | VARCHAR | |
+| description | TEXT | |
+| website | VARCHAR | |
+| created_at | TIMESTAMP | NOT NULL |
+| updated_at | TIMESTAMP | NOT NULL |
+
+---
+
+### faculties
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| university_id | UUID | FK → universities.id, NOT NULL |
+| name | VARCHAR | NOT NULL |
+| created_at | TIMESTAMP | NOT NULL |
+
+UNIQUE(university_id, name)
+
+---
+
+### departments
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| faculty_id | UUID | FK → faculties.id, NOT NULL |
+| name | VARCHAR | NOT NULL |
+| created_at | TIMESTAMP | NOT NULL |
+
+UNIQUE(faculty_id, name)
+
+---
+
+### batches
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| university_id | UUID | FK → universities.id, NOT NULL |
+| name | VARCHAR | NOT NULL |
+| created_at | TIMESTAMP | NOT NULL |
+
+UNIQUE(university_id, name)
+
+---
+
+### users
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| university_id | UUID | FK → universities.id, NOT NULL |
+| email | VARCHAR | UNIQUE, NOT NULL |
+| password_hash | VARCHAR | |
+| role | ENUM | student, club_admin, university_admin |
+| status | ENUM | invited, pending_profile, active, disabled |
+| student_id | VARCHAR | |
+| faculty_id | UUID | FK → faculties.id, NULLABLE |
+| department_id | UUID | FK → departments.id, NULLABLE |
+| batch_id | UUID | FK → batches.id, NULLABLE |
+| profile_picture | VARCHAR | |
+| bio | TEXT | |
+| created_at | TIMESTAMP | NOT NULL |
+| updated_at | TIMESTAMP | NOT NULL |
+
+---
+
+### interests
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| name | VARCHAR | UNIQUE, NOT NULL |
+
+---
+
+### user_interests
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| user_id | UUID | FK → users.id, NOT NULL |
+| interest_id | UUID | FK → interests.id, NOT NULL |
+
+PK(user_id, interest_id)
+
+---
+
+### skills
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| name | VARCHAR | UNIQUE, NOT NULL |
+
+---
+
+### user_skills
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| user_id | UUID | FK → users.id, NOT NULL |
+| skill_id | UUID | FK → skills.id, NOT NULL |
+
+PK(user_id, skill_id)
+
+---
+
+### social_platforms
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| name | VARCHAR | UNIQUE, NOT NULL |
+
+---
+
+### user_social_links
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| user_id | UUID | FK → users.id, NOT NULL |
+| platform_id | UUID | FK → social_platforms.id, NOT NULL |
+| url | VARCHAR | NOT NULL |
+
+UNIQUE(user_id, platform_id)
+
+---
+
+### invitations
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| university_id | UUID | FK → universities.id, NOT NULL |
+| email | VARCHAR | NOT NULL |
+| invited_by | UUID | FK → users.id, NOT NULL |
+| token | VARCHAR | UNIQUE, NOT NULL |
+| status | ENUM | pending, accepted, expired |
+| created_at | TIMESTAMP | NOT NULL |
+| expires_at | TIMESTAMP | NOT NULL |
+
+---
+
+### club_categories
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| name | VARCHAR | UNIQUE, NOT NULL |
+
+---
+
+### clubs
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| university_id | UUID | FK → universities.id, NOT NULL |
+| name | VARCHAR | NOT NULL |
+| logo | VARCHAR | |
+| cover_image | VARCHAR | |
+| description | TEXT | |
+| category_id | UUID | FK → club_categories.id, NOT NULL |
+| privacy | ENUM | public, private |
+| created_by | UUID | FK → users.id, NOT NULL |
+| is_verified | BOOLEAN | DEFAULT false |
+| is_archived | BOOLEAN | DEFAULT false |
+| created_at | TIMESTAMP | NOT NULL |
+| updated_at | TIMESTAMP | NOT NULL |
+
+---
+
+### memberships
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| club_id | UUID | FK → clubs.id, NOT NULL |
+| user_id | UUID | FK → users.id, NOT NULL |
+| role | ENUM | member, admin |
+| status | ENUM | pending, approved, rejected |
+| joined_at | TIMESTAMP | NOT NULL |
+
+UNIQUE(club_id, user_id)
+
+---
+
+### posts
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| club_id | UUID | FK → clubs.id, NOT NULL |
+| author_id | UUID | FK → users.id, NOT NULL |
+| type | ENUM | text, image, announcement, poll |
+| title | VARCHAR | |
+| content | TEXT | NOT NULL |
+| is_pinned | BOOLEAN | DEFAULT false |
+| created_at | TIMESTAMP | NOT NULL |
+| updated_at | TIMESTAMP | NOT NULL |
+
+---
+
+### post_attachments
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| post_id | UUID | FK → posts.id, NOT NULL |
+| file_url | VARCHAR | NOT NULL |
+| file_type | VARCHAR | NOT NULL |
+| file_name | VARCHAR | |
+| file_size | INTEGER | |
+| created_at | TIMESTAMP | NOT NULL |
+
+---
+
+### comments
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| post_id | UUID | FK → posts.id, NOT NULL |
+| author_id | UUID | FK → users.id, NOT NULL |
+| parent_id | UUID | FK → comments.id, NULLABLE |
+| content | TEXT | NOT NULL |
+| created_at | TIMESTAMP | NOT NULL |
+| updated_at | TIMESTAMP | NOT NULL |
+
+---
+
+### likes
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| post_id | UUID | FK → posts.id, NOT NULL |
+| user_id | UUID | FK → users.id, NOT NULL |
+| created_at | TIMESTAMP | NOT NULL |
+
+UNIQUE(post_id, user_id)
+
+---
+
+### events
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| club_id | UUID | FK → clubs.id, NOT NULL |
+| created_by | UUID | FK → users.id, NOT NULL |
+| title | VARCHAR | NOT NULL |
+| description | TEXT | |
+| date | DATE | NOT NULL |
+| time | TIME | NOT NULL |
+| venue | VARCHAR | |
+| capacity | INTEGER | |
+| cover_image | VARCHAR | |
+| created_at | TIMESTAMP | NOT NULL |
+| updated_at | TIMESTAMP | NOT NULL |
+
+---
+
+### rsvps
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| event_id | UUID | FK → events.id, NOT NULL |
+| user_id | UUID | FK → users.id, NOT NULL |
+| status | ENUM | going, interested, not_going |
+| created_at | TIMESTAMP | NOT NULL |
+
+UNIQUE(event_id, user_id)
+
+---
+
+### notifications
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| user_id | UUID | FK → users.id, NOT NULL |
+| type | ENUM | like, comment, event, announcement, membership |
+| title | VARCHAR | NOT NULL |
+| message | TEXT | NOT NULL |
+| reference_type | ENUM | post, comment, event, club, membership |
+| reference_id | UUID | NULLABLE |
+| is_read | BOOLEAN | DEFAULT false |
+| created_at | TIMESTAMP | NOT NULL |
+
+---
+
+### report_types
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| name | VARCHAR | UNIQUE, NOT NULL |
+
+---
+
+### reports
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PK |
+| reported_by | UUID | FK → users.id, NOT NULL |
+| university_id | UUID | FK → universities.id, NOT NULL |
+| report_type_id | UUID | FK → report_types.id, NOT NULL |
+| target_type | ENUM | post, comment, user |
+| target_id | UUID | NOT NULL |
+| reason | TEXT | |
+| status | ENUM | pending, reviewed, resolved, dismissed |
+| reviewed_by | UUID | FK → users.id, NULLABLE |
+| created_at | TIMESTAMP | NOT NULL |
+| updated_at | TIMESTAMP | NOT NULL |
+
+---
+
+## Relationships
 
 ```text
-Id
-Name
-Email
-PasswordHash
-Avatar
-Bio
-UniversityId
-Faculty
-Department
-Batch
-```
-
-## University
-
-```text
-Id
-Name
-Logo
-Description
-```
-
-## Club
-
-```text
-Id
-UniversityId
-Name
-Description
-Category
-Privacy
-Logo
-CoverImage
-CreatedBy
-CreatedAt
-```
-
-## Membership
-
-```text
-Id
-ClubId
-UserId
-Role
-Status
-JoinedAt
-```
-
-## Post
-
-```text
-Id
-ClubId
-UserId
-Title
-Content
-CreatedAt
-UpdatedAt
-```
-
-## Comment
-
-```text
-Id
-PostId
-UserId
-ParentCommentId
-Content
-CreatedAt
-```
-
-## Event
-
-```text
-Id
-ClubId
-Title
-Description
-Venue
-StartTime
-EndTime
-Capacity
-```
-
-## RSVP
-
-```text
-Id
-EventId
-UserId
-Status
-```
-
-## Notification
-
-```text
-Id
-UserId
-Type
-ReferenceId
-IsRead
-CreatedAt
-```
-
-## Report
-
-```text
-Id
-ReporterId
-TargetType
-TargetId
-Reason
-Status
-CreatedAt
+universities   1 ──── * faculties
+universities   1 ──── * batches
+universities   1 ──── * users
+universities   1 ──── * clubs
+universities   1 ──── * invitations
+faculties      1 ──── * departments
+faculties      1 ──── * users
+departments    1 ──── * users
+batches        1 ──── * users
+users          * ──── * interests (via user_interests)
+users          * ──── * skills (via user_skills)
+users          1 ──── * user_social_links
+social_platforms 1 ── * user_social_links
+club_categories 1 ── * clubs
+users          1 ──── * memberships
+clubs          1 ──── * memberships
+users          1 ──── * posts
+clubs          1 ──── * posts
+posts          1 ──── * post_attachments
+users          1 ──── * comments
+posts          1 ──── * comments
+comments       1 ──── * comments (replies)
+users          1 ──── * likes
+posts          1 ──── * likes
+clubs          1 ──── * events
+users          1 ──── * rsvps
+events         1 ──── * rsvps
+users          1 ──── * notifications
+report_types   1 ──── * reports
+users          1 ──── * reports
 ```
 
 ---
 
-# 21. REST API Structure
+# 24. API Structure
 
 ```text
 /api/auth
+
+/api/invitations
 
 /api/users
 
@@ -478,21 +817,21 @@ CreatedAt
 
 ---
 
-# 22. Pages
+# 25. Pages
 
-## Public
+## Authentication
 
-- Landing Page
+- Accept Invitation
+- Create Password
 - Login
-- Register
 - Forgot Password
 
 ---
 
 ## Student
 
-- Home Feed
-- Discover
+- Home
+- Discover Clubs
 - Club Details
 - Club Feed
 - Events
@@ -505,7 +844,7 @@ CreatedAt
 
 ## Club Admin
 
-- Dashboard
+- Club Dashboard
 - Manage Members
 - Manage Posts
 - Manage Events
@@ -516,43 +855,49 @@ CreatedAt
 ## University Admin
 
 - Dashboard
-- Manage Users
-- Manage Clubs
+- Student Management
+- Invitations
+- Club Management
 - Reports
 - Analytics
 
 ---
 
-# 23. Non-Functional Requirements
+# 26. Non-Functional Requirements
 
 ## Performance
 
-- Fast page load
-- Responsive UI
-- Lazy image loading
+- Responsive Design
+- Lazy Loading
+- Fast API Response
+
+---
 
 ## Security
 
 - JWT Authentication
 - Password Hashing
-- Authorization
-- Rate Limiting
+- Role-Based Authorization
 - Input Validation
-
-## Accessibility
-
-- Mobile Responsive
-- Keyboard Navigation
-- Screen Reader Friendly
+- Rate Limiting
 
 ---
 
-# 24. Success Metrics
+## Accessibility
+
+- Mobile Friendly
+- Keyboard Accessible
+- Screen Reader Support
+
+---
+
+# 27. Success Metrics
 
 Track
 
-- Registered Students
-- Active Users
+- Registered Universities
+- Invited Students
+- Active Students
 - Clubs Created
 - Club Memberships
 - Posts Created
@@ -563,9 +908,9 @@ Track
 
 ---
 
-# 25. Out of Scope (Phase 2)
+# 28. Out of Scope (Phase 2)
 
-Do **not** build these yet.
+The following features are intentionally excluded from the MVP:
 
 - Direct Messaging
 - Real-time Chat
@@ -576,26 +921,27 @@ Do **not** build these yet.
 - Alumni Network
 - Course Marketplace
 - Attendance QR
-- Club Finance
 - Payment Gateway
-- Mobile App
+- Club Finance
+- Mobile Applications
 - Live Streaming
 - Video Posts
 - File Collaboration
 
 ---
 
-# 26. Development Milestones
+# 29. Development Milestones
 
-## Phase 1.1 — Foundation
+## Milestone 1 — Foundation
 
 - Authentication
+- Invitation System
 - User Profiles
 - Universities
 
 ---
 
-## Phase 1.2 — Communities
+## Milestone 2 — Communities
 
 - Clubs
 - Memberships
@@ -603,7 +949,7 @@ Do **not** build these yet.
 
 ---
 
-## Phase 1.3 — Engagement
+## Milestone 3 — Engagement
 
 - Posts
 - Comments
@@ -611,49 +957,73 @@ Do **not** build these yet.
 
 ---
 
-## Phase 1.4 — Events
+## Milestone 4 — Events
 
-- Event Creation
+- Event Management
 - RSVP
 
 ---
 
-## Phase 1.5 — Administration
+## Milestone 5 — Administration
 
-- Moderation
+- Student Management
+- Club Management
 - Reports
 - Notifications
 - Analytics
 
 ---
 
-# 27. MVP Definition of Done
+# 30. MVP Definition of Done
 
-The MVP is complete when a student can:
+## Student
 
-- Register an account
-- Join their university
+- Accept invitation
+- Create password
+- Complete profile
+- Login
 - Discover clubs
-- Join a club
-- View club feed
-- Create a post
-- Comment on a post
-- Like a post
-- RSVP to an event
-- Receive notifications
+- Join clubs
+- Create posts
+- Comment
+- Like posts
+- RSVP to events
 
-A Club Admin can:
+---
 
-- Create a club
+## Club Admin
+
+- Create and manage clubs
 - Manage members
-- Create events
-- Moderate posts
+- Create and manage events
+- Moderate club content
 
-A University Admin can:
+---
 
-- Manage clubs
-- Manage users
-- Review reports
-- View platform analytics
+## University Admin
 
-At this point, Student Hub is ready for pilot testing with one university and a small group of student clubs.
+- Invite students
+- Bulk import students
+- Manage students
+- Create and manage clubs
+- Assign club admins
+- Moderate reports
+- View analytics
+
+---
+
+# Future Vision (Beyond Phase 1)
+
+After validating the MVP, Student Hub can expand into a comprehensive campus platform with:
+
+- Real-time messaging
+- AI-powered club and event recommendations
+- Alumni networking
+- Internship and career opportunities
+- Marketplace for students
+- Digital student ID
+- QR-based attendance
+- Mobile applications
+- University announcements
+- Academic communities
+- Multi-university collaboration
