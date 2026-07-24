@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hub.Application.Services;
 
-public class AuthService
+public class AuthService : IAuthService
 {
     private readonly IUserRepository _userRepository;
 

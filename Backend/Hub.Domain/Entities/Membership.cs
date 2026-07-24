@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Hub.Domain.Enums;
 
 namespace Hub.Domain.Entities
 {
@@ -19,9 +18,6 @@ namespace Hub.Domain.Entities
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public virtual User User { get; set; }
-
-        public MembershipRole Role { get; set; }
-        public MembershipStatus Status { get; set; }
 
         public DateTime JoinedAt { get; set; }
     }
