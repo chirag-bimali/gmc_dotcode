@@ -789,30 +789,316 @@ users          1 ──── * reports
 
 # 24. API Structure
 
+## Authentication
+
 ```text
-/api/auth
+POST   /api/auth/login
+POST   /api/auth/logout
+POST   /api/auth/refresh-token
+POST   /api/auth/forgot-password
+POST   /api/auth/reset-password
+```
 
-/api/invitations
+---
 
-/api/users
+## Invitations
 
-/api/universities
+```text
+GET    /api/invitations
+POST   /api/invitations
+POST   /api/invitations/bulk
+POST   /api/invitations/:id/resend
+GET    /api/invitations/:token/verify
+POST   /api/invitations/:token/accept
+```
 
-/api/clubs
+---
 
-/api/memberships
+## Users
 
-/api/posts
+```text
+GET    /api/users/me
+PUT    /api/users/me
+PUT    /api/users/me/password
+PUT    /api/users/me/profile-picture
+GET    /api/users/:id
+GET    /api/users
+PUT    /api/users/:id/disable
+PUT    /api/users/:id/enable
+DELETE /api/users/:id
+PUT    /api/users/:id/reset-password
+```
 
-/api/comments
+---
 
-/api/events
+## User Interests
 
-/api/rsvps
+```text
+GET    /api/users/me/interests
+PUT    /api/users/me/interests
+```
 
-/api/notifications
+---
 
-/api/reports
+## User Skills
+
+```text
+GET    /api/users/me/skills
+PUT    /api/users/me/skills
+```
+
+---
+
+## User Social Links
+
+```text
+GET    /api/users/me/social-links
+POST   /api/users/me/social-links
+PUT    /api/users/me/social-links/:id
+DELETE /api/users/me/social-links/:id
+```
+
+---
+
+## Universities
+
+```text
+GET    /api/universities/:id
+PUT    /api/universities/:id
+```
+
+---
+
+## Faculties
+
+```text
+GET    /api/universities/:universityId/faculties
+POST   /api/universities/:universityId/faculties
+PUT    /api/faculties/:id
+DELETE /api/faculties/:id
+```
+
+---
+
+## Departments
+
+```text
+GET    /api/faculties/:facultyId/departments
+POST   /api/faculties/:facultyId/departments
+PUT    /api/departments/:id
+DELETE /api/departments/:id
+```
+
+---
+
+## Batches
+
+```text
+GET    /api/universities/:universityId/batches
+POST   /api/universities/:universityId/batches
+PUT    /api/batches/:id
+DELETE /api/batches/:id
+```
+
+---
+
+## Interests (Lookup)
+
+```text
+GET    /api/interests
+POST   /api/interests
+DELETE /api/interests/:id
+```
+
+---
+
+## Skills (Lookup)
+
+```text
+GET    /api/skills
+POST   /api/skills
+DELETE /api/skills/:id
+```
+
+---
+
+## Social Platforms (Lookup)
+
+```text
+GET    /api/social-platforms
+POST   /api/social-platforms
+DELETE /api/social-platforms/:id
+```
+
+---
+
+## Club Categories (Lookup)
+
+```text
+GET    /api/club-categories
+POST   /api/club-categories
+PUT    /api/club-categories/:id
+DELETE /api/club-categories/:id
+```
+
+---
+
+## Clubs
+
+```text
+GET    /api/clubs
+GET    /api/clubs/:id
+POST   /api/clubs
+PUT    /api/clubs/:id
+DELETE /api/clubs/:id
+PUT    /api/clubs/:id/verify
+PUT    /api/clubs/:id/archive
+PUT    /api/clubs/:id/unarchive
+```
+
+---
+
+## Memberships
+
+```text
+GET    /api/clubs/:clubId/members
+POST   /api/clubs/:clubId/join
+POST   /api/clubs/:clubId/leave
+PUT    /api/clubs/:clubId/members/:userId/approve
+PUT    /api/clubs/:clubId/members/:userId/reject
+PUT    /api/clubs/:clubId/members/:userId/role
+DELETE /api/clubs/:clubId/members/:userId
+```
+
+---
+
+## Posts
+
+```text
+GET    /api/clubs/:clubId/posts
+GET    /api/posts/:id
+POST   /api/clubs/:clubId/posts
+PUT    /api/posts/:id
+DELETE /api/posts/:id
+PUT    /api/posts/:id/pin
+PUT    /api/posts/:id/unpin
+```
+
+---
+
+## Post Attachments
+
+```text
+POST   /api/posts/:postId/attachments
+DELETE /api/posts/:postId/attachments/:id
+```
+
+---
+
+## Comments
+
+```text
+GET    /api/posts/:postId/comments
+POST   /api/posts/:postId/comments
+PUT    /api/comments/:id
+DELETE /api/comments/:id
+```
+
+---
+
+## Likes
+
+```text
+POST   /api/posts/:postId/like
+DELETE /api/posts/:postId/like
+```
+
+---
+
+## Events
+
+```text
+GET    /api/clubs/:clubId/events
+GET    /api/events
+GET    /api/events/:id
+POST   /api/clubs/:clubId/events
+PUT    /api/events/:id
+DELETE /api/events/:id
+```
+
+---
+
+## RSVPs
+
+```text
+GET    /api/events/:eventId/rsvps
+POST   /api/events/:eventId/rsvp
+PUT    /api/events/:eventId/rsvp
+DELETE /api/events/:eventId/rsvp
+```
+
+---
+
+## Notifications
+
+```text
+GET    /api/notifications
+GET    /api/notifications/unread-count
+PUT    /api/notifications/:id/read
+PUT    /api/notifications/read-all
+```
+
+---
+
+## Reports
+
+```text
+GET    /api/reports
+GET    /api/reports/:id
+POST   /api/reports
+PUT    /api/reports/:id/review
+PUT    /api/reports/:id/resolve
+PUT    /api/reports/:id/dismiss
+```
+
+---
+
+## Report Types (Lookup)
+
+```text
+GET    /api/report-types
+POST   /api/report-types
+DELETE /api/report-types/:id
+```
+
+---
+
+## Search
+
+```text
+GET    /api/search/clubs?q=
+GET    /api/search/users?q=
+GET    /api/search/events?q=
+```
+
+---
+
+## Discover
+
+```text
+GET    /api/discover/popular-clubs
+GET    /api/discover/new-clubs
+GET    /api/discover/upcoming-events
+GET    /api/discover/suggested-clubs
+```
+
+---
+
+## Analytics
+
+```text
+GET    /api/analytics/university
+GET    /api/analytics/clubs/:clubId
 ```
 
 ---
