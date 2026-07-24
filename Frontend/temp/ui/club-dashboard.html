@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ScholarHub | Club Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#EF4444",
+                        "tertiary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fdf8f8",
+                        "primary-container": "#1c1b1b",
+                        "info": "#3B82F6",
+                        "tertiary-container": "#1c1b1a",
+                        "surface-tint": "#5f5e5e",
+                        "gray-100": "#F5F5F5",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#464747",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-primary-fixed": "#1c1b1b",
+                        "tertiary-fixed-dim": "#cac6c4",
+                        "outline": "#747878",
+                        "on-secondary-container": "#646464",
+                        "gray-200": "#E5E5E5",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-primary-container": "#858383",
+                        "surface-container-low": "#f7f3f2",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "gray-800": "#262626",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#ebe7e6",
+                        "secondary-fixed": "#e3e2e2",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "warning": "#F59E0B",
+                        "on-tertiary-fixed": "#1c1b1a",
+                        "surface-dim": "#ddd9d8",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "gray-300": "#D4D4D4",
+                        "background": "#fdf8f8",
+                        "gray-50": "#FAFAFA",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-container": "#e3e2e2",
+                        "on-background": "#1c1b1b",
+                        "primary": "#000000",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container": "#f1edec",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-container": "#868382",
+                        "secondary": "#5e5e5e",
+                        "surface-bright": "#fdf8f8",
+                        "on-tertiary-fixed-variant": "#484645",
+                        "tertiary-fixed": "#e6e2df",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-container-highest": "#e5e2e1",
+                        "success": "#10B981",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#c8c6c5",
+                        "gray-400": "#A3A3A3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "16px",
+                        "2xl": "48px",
+                        "reading-width": "700px",
+                        "lg": "24px",
+                        "max-width": "1280px",
+                        "3xl": "64px",
+                        "4xl": "96px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-h1": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-h4": ["Inter"],
+                        "caption": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-h2": ["Inter"],
+                        "headline-h3": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-h1": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-h4": ["20px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "headline-h2": ["30px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-h3": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+        .sidebar-widget { border: 1px solid #E5E5E5; border-radius: 8px; background: #ffffff; padding: 24px; margin-bottom: 24px; }
+        .activity-item:last-child { border-bottom: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<!-- Shell Layout Wrapper -->
+<div class="flex min-h-screen">
+<!-- SideNavBar Anchor -->
+<aside class="hidden md:flex flex-col h-full w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant z-50 p-md space-y-sm">
+<div class="flex items-center space-x-md px-sm py-md">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-primary">school</span>
+</div>
+<div>
+<h2 class="font-display text-headline-h4 font-bold text-primary">University Portal</h2>
+<p class="text-caption text-secondary">Student Hub</p>
+</div>
+</div>
+<nav class="flex-1 mt-lg space-y-xs">
+<!-- Dashboard Active State -->
+<a class="flex items-center space-x-md px-md py-sm bg-secondary-fixed text-primary font-semibold rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-display text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-secondary hover:bg-gray-200 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-display text-body-md">Courses</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-secondary hover:bg-gray-200 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-display text-body-md">Projects</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-secondary hover:bg-gray-200 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-display text-body-md">Communities</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-secondary hover:bg-gray-200 hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-display text-body-md">Library</span>
+</a>
+</nav>
+<div class="pt-lg border-t border-outline-variant space-y-xs">
+<button class="w-full flex items-center justify-center bg-primary text-on-primary py-sm px-md rounded-lg font-label-sm mb-lg hover:opacity-90 transition-opacity">
+                    New Project
+                </button>
+<a class="flex items-center space-x-md px-md py-sm text-secondary hover:bg-gray-200 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-display text-body-md">Help Center</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-secondary hover:bg-gray-200 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-display text-body-md">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col">
+<!-- TopNavBar Anchor -->
+<header class="bg-surface flex justify-between items-center w-full px-lg h-16 sticky top-0 z-40 border-b border-outline-variant">
+<div class="flex items-center space-x-md">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-primary" data-icon="code" style="font-size: 32px;">code</span>
+<h1 class="font-display text-headline-h3 font-semibold text-primary">Coding Society</h1>
+</div>
+<span class="px-sm py-1 bg-gray-100 text-gray-500 rounded text-caption border border-gray-200">Manage Club</span>
+</div>
+<div class="flex items-center space-x-lg">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-secondary pointer-events-none">search</span>
+<input class="bg-surface-container-low border-outline-variant rounded-full pl-xl pr-md py-1 text-body-md w-64 focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Search data..." type="text"/>
+</div>
+<div class="flex items-center space-x-md text-secondary">
+<button class="p-xs hover:bg-gray-100 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-xs hover:bg-gray-100 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young student in business casual attire against a clean, minimalist gray background, representing a high-achieving university club administrator. The lighting is soft and corporate, fitting a modern scholarly dashboard aesthetic with high clarity and neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeIFyc7a71uFa8b63xTverZDpUU3C2uYmr7fMGLK5UMLCHtqbUVoDRL67z6Kh_39s6YpH1lgx2jhK69oMhKXiFu4g0V7enI6LkggtK9YltL2ZRSLKWXboTtT8iFXUaQD1zjrYdHrWlEes9ySXB2rFqJNJihi3AJExLPBmTJFo6rlm0KprvCwFprhcJcS_vFmCOBtBUY1RNfrqIxC8aFG5W8VgaK9Xe_m0ntKR9E6TE4ZonVhkrjMPrTmkLh25aUqqUHuonynNa0EM"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-lg max-w-max-width mx-auto w-full space-y-xl">
+<!-- Stat Cards Row -->
+<div class="stats-grid">
+<div class="bg-white border border-gray-200 p-lg rounded-lg">
+<div class="flex justify-between items-start mb-md">
+<span class="text-secondary font-label-sm">Total Members</span>
+<span class="material-symbols-outlined text-gray-400" data-icon="person">person</span>
+</div>
+<div class="flex items-baseline space-x-sm">
+<span class="text-headline-h2 font-display text-primary">1,240</span>
+<span class="text-success text-caption flex items-center">+12 this week</span>
+</div>
+</div>
+<div class="bg-white border border-gray-200 p-lg rounded-lg">
+<div class="flex justify-between items-start mb-md">
+<span class="text-secondary font-label-sm">Active Members</span>
+<span class="material-symbols-outlined text-gray-400" data-icon="bolt">bolt</span>
+</div>
+<div class="flex items-baseline space-x-sm">
+<span class="text-headline-h2 font-display text-primary">86</span>
+<span class="text-warning text-caption flex items-center">-2% from yesterday</span>
+</div>
+</div>
+<div class="bg-white border border-gray-200 p-lg rounded-lg">
+<div class="flex justify-between items-start mb-md">
+<span class="text-secondary font-label-sm">Total Posts</span>
+<span class="material-symbols-outlined text-gray-400" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<div class="flex items-baseline space-x-sm">
+<span class="text-headline-h2 font-display text-primary">412</span>
+<span class="text-success text-caption flex items-center">+8 today</span>
+</div>
+</div>
+<div class="bg-white border border-gray-200 p-lg rounded-lg">
+<div class="flex justify-between items-start mb-md">
+<span class="text-secondary font-label-sm">Total Events</span>
+<span class="material-symbols-outlined text-gray-400" data-icon="calendar_month">calendar_month</span>
+</div>
+<div class="flex items-baseline space-x-sm">
+<span class="text-headline-h2 font-display text-primary">24</span>
+<span class="text-info text-caption flex items-center">3 scheduled this month</span>
+</div>
+</div>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Left Column: Recent Activity -->
+<div class="lg:col-span-2 space-y-md">
+<div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+<div class="px-lg py-md border-b border-gray-100 flex justify-between items-center">
+<h3 class="font-headline-h4 text-primary">Recent Activity</h3>
+<button class="text-primary font-label-sm hover:underline">View all</button>
+</div>
+<div class="divide-y divide-gray-100">
+<!-- Activity Item -->
+<div class="px-lg py-md flex items-start space-x-md activity-item hover:bg-gray-50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="person_add">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md text-primary"><span class="font-semibold">Sarah Miller</span> joined the club</p>
+<p class="text-caption text-secondary">2 minutes ago</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="px-lg py-md flex items-start space-x-md activity-item hover:bg-gray-50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="event">event</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md text-primary"><span class="font-semibold">David Park</span> created an event: <span class="italic">Winter Hackathon 2024</span></p>
+<p class="text-caption text-secondary">4 hours ago</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="px-lg py-md flex items-start space-x-md activity-item hover:bg-gray-50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="post_add">post_add</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md text-primary"><span class="font-semibold">Elena Rodriguez</span> posted a resource: <span class="text-info">Advanced React Patterns</span></p>
+<p class="text-caption text-secondary">Yesterday at 14:20</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="px-lg py-md flex items-start space-x-md activity-item hover:bg-gray-50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="campaign">campaign</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md text-primary"><span class="font-semibold">System</span> sent a broadcast email to all members</p>
+<p class="text-caption text-secondary">Oct 24, 09:00 AM</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="px-lg py-md flex items-start space-x-md activity-item hover:bg-gray-50 transition-colors">
+<div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md text-primary"><span class="font-semibold">James Chen</span> was promoted to Moderator</p>
+<p class="text-caption text-secondary">Oct 23, 04:15 PM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Widgets -->
+<div class="space-y-lg">
+<!-- Pending Join Requests -->
+<div class="sidebar-widget">
+<div class="flex justify-between items-center mb-md">
+<h4 class="font-label-sm text-primary uppercase tracking-wider">Pending Requests (3)</h4>
+</div>
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-sm">
+<div class="w-8 h-8 rounded-full bg-gray-200"></div>
+<div class="text-body-md">
+<p class="font-medium text-primary">Alex Thorne</p>
+<p class="text-caption text-secondary">CS Sophmore</p>
+</div>
+</div>
+<div class="flex space-x-xs">
+<button class="p-1 text-success hover:bg-success/10 rounded transition-colors" title="Approve">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</button>
+<button class="p-1 text-error hover:bg-error/10 rounded transition-colors" title="Reject">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-sm">
+<div class="w-8 h-8 rounded-full bg-gray-200"></div>
+<div class="text-body-md">
+<p class="font-medium text-primary">Mia Wong</p>
+<p class="text-caption text-secondary">Math Freshman</p>
+</div>
+</div>
+<div class="flex space-x-xs">
+<button class="p-1 text-success hover:bg-success/10 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</button>
+<button class="p-1 text-error hover:bg-error/10 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-sm">
+<div class="w-8 h-8 rounded-full bg-gray-200"></div>
+<div class="text-body-md">
+<p class="font-medium text-primary">Toby Smith</p>
+<p class="text-caption text-secondary">Data Science Senior</p>
+</div>
+</div>
+<div class="flex space-x-xs">
+<button class="p-1 text-success hover:bg-success/10 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</button>
+<button class="p-1 text-error hover:bg-error/10 rounded transition-colors">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions Grid -->
+<div class="sidebar-widget">
+<h4 class="font-label-sm text-primary uppercase tracking-wider mb-md">Quick Actions</h4>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex flex-col items-center justify-center p-md bg-gray-50 border border-gray-200 rounded hover:border-primary hover:bg-white transition-all group">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary mb-xs" data-icon="edit_note">edit_note</span>
+<span class="text-caption font-medium">Create Post</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-gray-50 border border-gray-200 rounded hover:border-primary hover:bg-white transition-all group">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary mb-xs" data-icon="add_circle">add_circle</span>
+<span class="text-caption font-medium">Create Event</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-gray-50 border border-gray-200 rounded hover:border-primary hover:bg-white transition-all group">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary mb-xs" data-icon="person_add">person_add</span>
+<span class="text-caption font-medium">Invite Members</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md bg-gray-50 border border-gray-200 rounded hover:border-primary hover:bg-white transition-all group">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary mb-xs" data-icon="settings_suggest">settings_suggest</span>
+<span class="text-caption font-medium">Club Settings</span>
+</button>
+</div>
+</div>
+<!-- Upcoming Events -->
+<div class="sidebar-widget">
+<h4 class="font-label-sm text-primary uppercase tracking-wider mb-md">Upcoming Events</h4>
+<div class="space-y-lg">
+<div class="flex items-start space-x-md">
+<div class="w-12 h-12 bg-gray-100 rounded flex flex-col items-center justify-center flex-shrink-0">
+<span class="text-caption font-bold text-primary uppercase">Dec</span>
+<span class="text-headline-h4 text-primary leading-none">12</span>
+</div>
+<div>
+<h5 class="text-body-md font-semibold text-primary">Winter Hackathon 2024</h5>
+<div class="flex items-center space-x-md mt-xs">
+<span class="text-caption text-secondary flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-xs" data-icon="group">group</span>
+                                                142 RSVP
+                                            </span>
+</div>
+</div>
+</div>
+<div class="flex items-start space-x-md">
+<div class="w-12 h-12 bg-gray-100 rounded flex flex-col items-center justify-center flex-shrink-0">
+<span class="text-caption font-bold text-primary uppercase">Dec</span>
+<span class="text-headline-h4 text-primary leading-none">18</span>
+</div>
+<div>
+<h5 class="text-body-md font-semibold text-primary">AI Workshop Series</h5>
+<div class="flex items-center space-x-md mt-xs">
+<span class="text-caption text-secondary flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-xs" data-icon="group">group</span>
+                                                56 RSVP
+                                            </span>
+</div>
+</div>
+</div>
+<button class="w-full text-center py-xs border border-gray-200 rounded text-caption text-secondary hover:bg-gray-50 transition-colors">
+                                    Calendar View
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction for hover states -->
+<script>
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.98)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = 'scale(1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Student Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-variant": "#e5e2e1",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface-container": "#f1edec",
+                    "on-primary-fixed-variant": "#474746",
+                    "info": "#3B82F6",
+                    "on-secondary-container": "#646464",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-secondary-fixed-variant": "#464747",
+                    "tertiary-fixed-dim": "#cac6c4",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#fdf8f8",
+                    "on-tertiary-fixed-variant": "#484645",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "inverse-primary": "#c8c6c5",
+                    "success": "#10B981",
+                    "gray-800": "#262626",
+                    "gray-100": "#F5F5F5",
+                    "outline": "#747878",
+                    "gray-400": "#A3A3A3",
+                    "on-background": "#1c1b1b",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#858383",
+                    "inverse-on-surface": "#f4f0ef",
+                    "surface-tint": "#5f5e5e",
+                    "secondary": "#5e5e5e",
+                    "surface-container-low": "#f7f3f2",
+                    "secondary-container": "#e3e2e2",
+                    "on-surface": "#1c1b1b",
+                    "gray-200": "#E5E5E5",
+                    "error": "#EF4444",
+                    "surface-bright": "#fdf8f8",
+                    "on-tertiary-container": "#868382",
+                    "tertiary": "#000000",
+                    "warning": "#F59E0B",
+                    "surface-container-high": "#ebe7e6",
+                    "tertiary-fixed": "#e6e2df",
+                    "error-container": "#ffdad6",
+                    "gray-50": "#FAFAFA",
+                    "inverse-surface": "#313030",
+                    "primary": "#000000",
+                    "background": "#fdf8f8",
+                    "secondary-fixed": "#e3e2e2",
+                    "on-surface-variant": "#444748",
+                    "tertiary-container": "#1c1b1a",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#e5e2e1",
+                    "on-tertiary-fixed": "#1c1b1a",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#ddd9d8",
+                    "outline-variant": "#c4c7c7",
+                    "primary-container": "#1c1b1b",
+                    "gray-300": "#D4D4D4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "2xl": "48px",
+                    "lg": "24px",
+                    "reading-width": "700px",
+                    "3xl": "64px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "max-width": "1280px",
+                    "4xl": "96px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-h1-mobile": ["Inter"],
+                    "display": ["Inter"],
+                    "headline-h3": ["Inter"],
+                    "headline-h2": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-h1": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-h4": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-h1-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-h3": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-h2": ["30px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "headline-h1": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-h4": ["20px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .login-card {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        }
+        .transition-professional {
+            transition: all 200ms ease-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<main class="flex min-h-screen">
+<!-- Left Panel: Branding (Hidden on mobile/tablet) -->
+<section class="hidden md:flex md:w-1/2 bg-gray-800 p-3xl flex-col justify-between relative overflow-hidden">
+<!-- Subtle Abstract Pattern Overlay -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="z-10">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-white text-headline-h3" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<h1 class="font-headline-h3 text-headline-h3 font-bold text-white tracking-tight">Student Hub</h1>
+</div>
+</div>
+<div class="z-10 max-w-md">
+<h2 class="font-display text-display text-white mb-md">Your Campus Community, Connected.</h2>
+<p class="font-body-lg text-body-lg text-gray-400">Streamline your academic journey with the all-in-one portal for courses, resources, and collaboration.</p>
+</div>
+<div class="z-10">
+<div class="h-64 w-full rounded-xl overflow-hidden border border-white/10">
+<div class="w-full h-full bg-cover bg-center grayscale opacity-80" data-alt="A minimalist architectural photograph of a modern university library interior. The scene features vast open spaces, clean concrete lines, and large glass windows letting in soft natural light. The aesthetic is strictly professional and academic, using a neutral grayscale palette of charcoal, light gray, and crisp white. High-end minimalist photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCr58_tetl919HZfghJH1fC9ALT2wdUkp0Qoj_gx-Pmb6dwXaGzeUbQNkOR2WpsT8klaHhTK5FRwGOg7J-VCqTeza112wxPGjvo14vyAnuoiIkcBIjxApTCxb6oXC1YzVT7SRFCPDnqDJPGzqzHOB5QAOuTfS4_xX2gH4kHGdYfipcIjjTMObU50vVjnYOL2FfbPcq6iY6pEvzdbdsPaTCwUu1j5SUucO29pXBqIvPqKFeBtLfsdQJh744tDklAlEw9LP_13MXBHWQ')"></div>
+</div>
+</div>
+</section>
+<!-- Right Panel: Login Form -->
+<section class="w-full md:w-1/2 flex flex-col items-center justify-center p-lg md:p-3xl bg-surface">
+<!-- Mobile Logo (Visible only on small screens) -->
+<div class="md:hidden flex items-center gap-sm mb-2xl">
+<span class="material-symbols-outlined text-primary text-headline-h4" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-headline-h4 text-headline-h4 font-extrabold text-primary tracking-tight">Student Hub</span>
+</div>
+<div class="w-full max-w-[400px]">
+<div class="mb-xl text-center md:text-left">
+<h2 class="font-headline-h1 text-headline-h1 text-on-surface mb-xs">Welcome back</h2>
+<p class="font-body-md text-body-md text-secondary">Sign in to your account</p>
+</div>
+<!-- Error Alert (Subtle) -->
+<div class="bg-error-container border border-error/10 text-on-error-container p-md rounded-lg flex items-center gap-sm mb-lg animate-in fade-in slide-in-from-top-1 duration-300" id="error-alert">
+<span class="material-symbols-outlined text-[18px]" data-icon="error">error</span>
+<span class="font-label-sm text-label-sm">Invalid email or password.</span>
+</div>
+<form class="space-y-lg" onsubmit="event.preventDefault();">
+<!-- Email Input -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant block" for="email">Email Address</label>
+<input class="w-full h-[44px] px-md rounded-lg border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-md text-body-md transition-professional bg-white" id="email" name="email" placeholder="e.g. alex.smith@university.edu" type="email"/>
+</div>
+<!-- Password Input -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant block" for="password">Password</label>
+<div class="relative">
+<input class="w-full h-[44px] px-md pr-xl rounded-lg border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-md text-body-md transition-professional bg-white" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-secondary hover:text-primary transition-professional flex items-center" id="toggle-password" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Options Row -->
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer" type="checkbox"/>
+<span class="font-label-sm text-label-sm text-secondary group-hover:text-primary transition-professional">Remember Me</span>
+</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline font-semibold transition-professional" href="#">Forgot Password?</a>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-[44px] bg-primary text-on-primary font-label-sm text-label-sm font-semibold rounded-lg hover:bg-gray-800 active:scale-[0.98] transition-professional shadow-sm" type="submit">
+                        Sign In
+                    </button>
+<!-- Footer Link -->
+<p class="text-center font-caption text-caption text-secondary pt-md">
+                        Don't have an account? <a class="text-primary font-semibold hover:underline" href="#">Contact administration</a>
+</p>
+</form>
+</div>
+</section>
+</main>
+<!-- Simple Interactivity -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('toggle-password');
+            const passwordInput = document.getElementById('password');
+            
+            toggleBtn.addEventListener('click', () => {
+                const isPassword = passwordInput.type === 'password';
+                passwordInput.type = isPassword ? 'text' : 'password';
+                
+                const icon = toggleBtn.querySelector('.material-symbols-outlined');
+                icon.textContent = isPassword ? 'visibility_off' : 'visibility';
+            });
+
+            // Demo purpose: hide error after a few seconds
+            setTimeout(() => {
+                const alert = document.getElementById('error-alert');
+                if(alert) {
+                    alert.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+                    setTimeout(() => alert.classList.add('hidden'), 500);
+                }
+            }, 5000);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Club Management | Student Hub Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        /* Custom scrollbar for minimalist feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e5e2e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #747878; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f7f3f2",
+                        "on-primary-fixed-variant": "#474746",
+                        "outline-variant": "#c4c7c7",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary-fixed": "#e6e2df",
+                        "on-surface": "#1c1b1b",
+                        "outline": "#747878",
+                        "secondary": "#5e5e5e",
+                        "gray-200": "#E5E5E5",
+                        "background": "#fdf8f8",
+                        "on-primary-fixed": "#1c1b1b",
+                        "gray-50": "#FAFAFA",
+                        "on-surface-variant": "#444748",
+                        "surface-variant": "#e5e2e1",
+                        "warning": "#F59E0B",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-dim": "#ddd9d8",
+                        "surface": "#fdf8f8",
+                        "surface-container": "#f1edec",
+                        "success": "#10B981",
+                        "gray-400": "#A3A3A3",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-tint": "#5f5e5e",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#c8c6c5",
+                        "info": "#3B82F6",
+                        "secondary-container": "#e3e2e2",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fdf8f8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "error": "#EF4444",
+                        "surface-container-high": "#ebe7e6",
+                        "on-background": "#1c1b1b",
+                        "tertiary-fixed-dim": "#cac6c4",
+                        "on-tertiary-fixed-variant": "#484645",
+                        "on-tertiary-fixed": "#1c1b1a",
+                        "gray-300": "#D4D4D4",
+                        "tertiary-container": "#1c1b1a",
+                        "tertiary": "#000000",
+                        "primary": "#000000",
+                        "on-primary-container": "#858383",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f4f0ef",
+                        "primary-fixed": "#e5e2e1",
+                        "inverse-surface": "#313030",
+                        "on-error": "#ffffff",
+                        "gray-800": "#262626",
+                        "primary-container": "#1c1b1b",
+                        "on-secondary-container": "#646464",
+                        "on-tertiary-container": "#868382",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-error-container": "#93000a",
+                        "gray-100": "#F5F5F5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "max-width": "1280px",
+                        "4xl": "96px",
+                        "2xl": "48px",
+                        "md": "16px",
+                        "reading-width": "700px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "3xl": "64px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "display": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "caption": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-h3": ["Inter"],
+                        "headline-h1-mobile": ["Inter"],
+                        "headline-h4": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-h2": ["Inter"],
+                        "headline-h1": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased overflow-x-hidden">
+<!-- SideNavBar (Desktop) -->
+<aside class="fixed left-0 top-0 h-full w-[240px] hidden md:flex flex-col bg-primary py-lg gap-md z-50 shadow-sm transition-all duration-200 ease-out">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-h4 text-headline-h4 text-on-primary font-bold">Student Hub</h1>
+<p class="font-label-sm text-label-sm text-gray-400">Academic Portal</p>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<a class="flex items-center gap-md px-md py-sm text-gray-400 hover:bg-white/5 hover:text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-gray-400 hover:bg-white/5 hover:text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-label-sm text-label-sm">Courses</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-on-primary-container/10 border-l-4 border-on-primary text-on-primary font-bold transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Clubs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-gray-400 hover:bg-white/5 hover:text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-label-sm text-label-sm">Admin</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-gray-400 hover:bg-white/5 hover:text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-gray-400 hover:bg-white/5 hover:text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<div class="px-sm mt-auto">
+<a class="flex items-center gap-md px-md py-sm text-gray-400 hover:bg-white/5 hover:text-on-primary rounded transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full h-[64px] bg-surface z-40 border-b border-outline-variant flex justify-between items-center px-lg transition-all duration-200 ease-out md:pl-[264px]">
+<div class="flex items-center gap-md md:hidden">
+<button class="p-xs text-primary transition-colors hover:bg-gray-100 rounded" onclick="toggleMobileNav()">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-h4 text-headline-h4 font-bold text-primary">Student Hub</span>
+</div>
+<div class="hidden md:block flex-1">
+<div class="relative max-w-md">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-gray-400 text-body-md" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-md py-2 text-body-md focus:ring-2 focus:ring-primary/20" placeholder="Global search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 text-primary hover:bg-gray-100 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-primary hover:bg-gray-100 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden ml-md">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a university administrator in a clean-cut corporate style, featuring neutral lighting and a soft gray background. The subject is wearing a modern professional suit, looking directly at the camera with a confident expression. Minimalist and sharp aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjmUakhQO19bkS0MXrjF47yxllsV3ZJO4mPcHP0ePrtU1OtJUAIFTTTSwy4DEbfJgYQyAHImlg6-w9Qiy225uK6vre4KO7ccqq8wPJw_oaxeVF-AYJrWi5JZRDa0pvjgcNwKU2Vbm2Gv1UusgrH6aK-DMmoymJfxdDN87OZV9-cv3TAZWg2mL9WQ-hL3H7yaKB4v6ptU3-gWSWVjWQzKJuve7-W21JX4Bp1F25dBlVKSaPowPbbJN2SFpdAf4Lk_zXm4_xdrJSnDw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-[64px] md:pl-[240px] min-h-screen transition-all duration-200 ease-out">
+<div class="p-lg max-w-max-width mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<div class="flex items-center gap-sm">
+<h2 class="font-headline-h2 text-headline-h2 font-semibold">Manage Clubs</h2>
+<span class="px-2 py-0.5 bg-primary text-on-primary text-xs font-bold rounded-full">24</span>
+</div>
+<p class="text-on-surface-variant font-body-md mt-1">Create, verify, and manage clubs across the university.</p>
+</div>
+<button class="flex items-center gap-sm bg-primary text-on-primary px-lg py-sm rounded-lg font-label-sm text-label-sm hover:bg-gray-800 transition-all duration-200" onclick="openModal()">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                    Create Club
+                </button>
+</div>
+<!-- Controls Row -->
+<div class="bg-white border border-gray-200 rounded-xl p-md mb-lg flex flex-wrap items-center gap-md">
+<div class="relative flex-1 max-w-xs">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-gray-400 text-body-md" data-icon="search">search</span>
+<input class="w-full border-gray-200 rounded-lg pl-10 pr-md py-2 text-body-md focus:border-primary focus:ring-0" placeholder="Search clubs..." type="text"/>
+</div>
+<div class="flex items-center gap-sm ml-auto">
+<select class="border-gray-200 rounded-lg text-body-md focus:border-primary focus:ring-0 pr-xl">
+<option>All Categories</option>
+<option>Academic</option>
+<option>Sports</option>
+<option>Arts</option>
+<option>Technology</option>
+</select>
+<select class="border-gray-200 rounded-lg text-body-md focus:border-primary focus:ring-0 pr-xl">
+<option>All Statuses</option>
+<option>Active</option>
+<option>Pending Verification</option>
+<option>Archived</option>
+</select>
+<button class="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Club Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Card 1: Active -->
+<div class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-all duration-200 group">
+<div class="flex items-start justify-between mb-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-[24px]" data-icon="code">code</span>
+</div>
+<div>
+<h3 class="font-headline-h4 text-headline-h4 font-bold truncate max-w-[140px]">Dev Collective</h3>
+<p class="text-gray-500 font-label-sm text-label-sm">Technology</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-wider rounded">Active</span>
+</div>
+<div class="grid grid-cols-3 gap-sm py-md border-y border-gray-100 mb-md text-gray-500">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="groups">groups</span>
+<span class="text-xs font-semibold">412</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="public">public</span>
+<span class="text-xs font-semibold">Public</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="calendar_today">calendar_today</span>
+<span class="text-xs font-semibold">12</span>
+</div>
+</div>
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a young male student executive in a university setting, wearing a clean modern shirt. The lighting is bright and professional, suggesting a campus environment. The overall mood is academic and orderly with a grayscale color scheme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIBSXaJ3QNjHbRrQKUJVQl2BgRC4UdfbdrlXCu_IGd1W3SZY_xCAmXbrKZcuIK71XXGDgh8c6RRf-QnbVbvSOCOFCtBUMDgmSFCACOxJAkYDhqYPunXW0KMZ3XZVc9LnL2P-boRQZ_d1vlkaacg2AHj7TxSkzKaU1y8oeMtA3IiyQXQvQQf4BM04GHErMA-NTWsbPY81zwHrkTu4fAljU6QFsjX2c5O-2ZDozmSnWGTlpa-DqkiBQcgFyibKqxovvSuoaMM8spsGg"/>
+</div>
+<span class="text-xs text-gray-500 font-body-md">Managed by Alex Chen</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-2 text-xs font-bold border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">View</button>
+<button class="flex-1 py-2 text-xs font-bold border border-error text-error rounded-lg hover:bg-error/5 transition-colors">Archive</button>
+<button class="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Pending -->
+<div class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-all duration-200">
+<div class="flex items-start justify-between mb-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-[24px]" data-icon="palette">palette</span>
+</div>
+<div>
+<h3 class="font-headline-h4 text-headline-h4 font-bold truncate max-w-[140px]">Fine Arts Soc</h3>
+<p class="text-gray-500 font-label-sm text-label-sm">Arts</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-amber-50 text-amber-700 text-[11px] font-bold uppercase tracking-wider rounded">Pending</span>
+</div>
+<div class="grid grid-cols-3 gap-sm py-md border-y border-gray-100 mb-md text-gray-500">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="groups">groups</span>
+<span class="text-xs font-semibold">24</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="lock">lock</span>
+<span class="text-xs font-semibold">Private</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="calendar_today">calendar_today</span>
+<span class="text-xs font-semibold">0</span>
+</div>
+</div>
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a young female university student leader with a minimalist and professional look. She is in a modern library setting with soft focus on the books behind her. The lighting is natural and high-key, emphasizing a clean academic atmosphere with neutral gray and white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp6269fpjP5Nicmj6vM1QYLjAm94ADtZ3jzlPArdnSrMAgVkbG6ztn-qqTs7Xru8Egbze-mAWVYjFk9MMzMPuIom5fduQV4V_AZWVE3E7XLjxDXzm2rJSXMmVa7U0tmOmeMZhMUXTdngYdmf2shsaxBSr4aQYfukFrNvzi5vUJUC-z5dznR2Lf_tTBo3QEtScsJCq_LYrUTy-8LRc7Ar3aWNPi6nZypsbuJ2QxYNTxD9ZvZ04ji6hRc7R7vV4mtL3Z38VmetDiba0"/>
+</div>
+<span class="text-xs text-gray-500 font-body-md">Managed by Sarah Jenkins</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-2 text-xs font-bold border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">View</button>
+<button class="flex-1 py-2 text-xs font-bold bg-primary text-on-primary rounded-lg hover:bg-gray-800 transition-colors">Verify</button>
+<button class="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Archived -->
+<div class="bg-white border border-gray-200 rounded-xl p-5 opacity-75 hover:opacity-100 transition-all duration-200">
+<div class="flex items-start justify-between mb-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-gray-200 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-gray-500 text-[24px]" data-icon="history_edu">history_edu</span>
+</div>
+<div>
+<h3 class="font-headline-h4 text-headline-h4 font-bold truncate max-w-[140px]">Retro Gaming</h3>
+<p class="text-gray-500 font-label-sm text-label-sm">Leisure</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-gray-100 text-gray-500 text-[11px] font-bold uppercase tracking-wider rounded">Archived</span>
+</div>
+<div class="grid grid-cols-3 gap-sm py-md border-y border-gray-100 mb-md text-gray-500">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="groups">groups</span>
+<span class="text-xs font-semibold">156</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="public">public</span>
+<span class="text-xs font-semibold">Public</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="calendar_today">calendar_today</span>
+<span class="text-xs font-semibold">0</span>
+</div>
+</div>
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male graduate assistant in an academic office. He is wearing a dark gray sweater over a white shirt, portraying a serious and dedicated academic tone. The lighting is diffused and calm, with a palette restricted to blacks, whites, and varying shades of gray." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiE9bp8HqZcXTp5dXm92nK9wA5sIX8Q27o2lOFE3Dxu46mYyBqegUIrhY0GymEnYXZKotXbEWMWSfrUWrmXVVVjKZFv4ysFGOE2xbumeGB5HlgNvvYY2ciHA3b7mXgPxkEkp-UyLUCXXPC9Lea7sHsB-BSxydPZkqfWa9XDVfqKFtrI7sxBqZtIUdnBS5S4LiwcJ-bzm_AqprZ0GizIdqRLCtizNDbX773DLGYR_Wb6gkWlZpX8SgIyMkTKfWfceDVDEKMu9cmxFo"/>
+</div>
+<span class="text-xs text-gray-500 font-body-md">Managed by Marcus Thorne</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-full py-2 text-xs font-bold border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">View History</button>
+<button class="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Active -->
+<div class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-all duration-200">
+<div class="flex items-start justify-between mb-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-[24px]" data-icon="fitness_center">fitness_center</span>
+</div>
+<div>
+<h3 class="font-headline-h4 text-headline-h4 font-bold truncate max-w-[140px]">Powerlift Club</h3>
+<p class="text-gray-500 font-label-sm text-label-sm">Sports</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-wider rounded">Active</span>
+</div>
+<div class="grid grid-cols-3 gap-sm py-md border-y border-gray-100 mb-md text-gray-500">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="groups">groups</span>
+<span class="text-xs font-semibold">89</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="public">public</span>
+<span class="text-xs font-semibold">Public</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="calendar_today">calendar_today</span>
+<span class="text-xs font-semibold">4</span>
+</div>
+</div>
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a student athlete in a professional headshot. She is in a sports complex foyer with modern architecture. Bright natural lighting illuminates her face, maintaining a professional yet active aesthetic. The color palette follows the university branding of grayscale and deep blacks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgAoE82ikSp99LE3A8rM6YblZRaf_Qo2vfyeo3sC74o8Uh4tWIb7Ke5qv9seVbZTjdqMEU1KwA2zkL9Krm8RMMIWJChTXEhdUfoUqrNxXAv_n8-tToeRqZf6tqbE_TP5l7HLjL9HxrXY396K2itsGLfLSsN_67pZkK3tjL7-LU9ep46MaOUX_k5dNVEgFEOFy93_JFgDd9b3WKQ-kRKFifGlWfnIFzw12gjhdcL8YhQgBjDdUWdegUeraX0FTmsZqo7-FVbwEqQZU"/>
+</div>
+<span class="text-xs text-gray-500 font-body-md">Managed by Diana Prince</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-2 text-xs font-bold border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">View</button>
+<button class="flex-1 py-2 text-xs font-bold border border-error text-error rounded-lg hover:bg-error/5 transition-colors">Archive</button>
+<button class="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 5: Active -->
+<div class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-all duration-200">
+<div class="flex items-start justify-between mb-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white text-[24px]" data-icon="theater_comedy">theater_comedy</span>
+</div>
+<div>
+<h3 class="font-headline-h4 text-headline-h4 font-bold truncate max-w-[140px]">Drama Guild</h3>
+<p class="text-gray-500 font-label-sm text-label-sm">Arts</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-wider rounded">Active</span>
+</div>
+<div class="grid grid-cols-3 gap-sm py-md border-y border-gray-100 mb-md text-gray-500">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="groups">groups</span>
+<span class="text-xs font-semibold">210</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="public">public</span>
+<span class="text-xs font-semibold">Public</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] mb-xs" data-icon="calendar_today">calendar_today</span>
+<span class="text-xs font-semibold">8</span>
+</div>
+</div>
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-6 h-6 rounded-full bg-gray-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A male student in a creative studio environment. He has an expressive yet professional look, wearing a black turtleneck. The studio lighting is dramatic but clean, highlighting the artistic nature of his role while maintaining the grayscale minimalist theme of the app shell." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2QOIRYtF1srRhLvN1cUU0AONDok2rSzRByMKk-KPkWSacO7_R0EI-FFr5gIh5eRE9KWHnqCICF9UVVmQ426x4RbCgbfjTbwbJCO2Yvr9pGswnCVihBCuMZgcWBA-R2EDZKKaPWV_sxKVrJOs4GmABI05h3o_NjX2qBmSZLIIdSith1NGGuS9pstP3-EbDOFbocck_1ph2OWgogNKprVhQtHIikwqepqzuCRQ_jUQW1m93wG2d0xT3VldKQwm2Mk_uiVDZ3YcXFNg"/>
+</div>
+<span class="text-xs text-gray-500 font-body-md">Managed by Leo Banks</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-2 text-xs font-bold border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">View</button>
+<button class="flex-1 py-2 text-xs font-bold border border-error text-error rounded-lg hover:bg-error/5 transition-colors">Archive</button>
+<button class="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Add New Club Placeholder -->
+<button class="border-2 border-dashed border-gray-200 rounded-xl p-5 flex flex-col items-center justify-center text-gray-400 hover:border-primary hover:text-primary transition-all duration-200 group" onclick="openModal()">
+<span class="material-symbols-outlined text-[48px] mb-md group-hover:scale-110 transition-transform" data-icon="add_circle">add_circle</span>
+<span class="font-headline-h4 text-headline-h4 font-bold">Register New Club</span>
+<span class="font-body-md mt-1">Add a new student organization</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Create Club Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-md overflow-y-auto" id="createModal">
+<div class="modal-overlay absolute inset-0 transition-opacity duration-300 opacity-0" id="modalOverlay"></div>
+<div class="relative bg-white w-full max-w-lg rounded-xl shadow-large p-lg transform translate-y-10 opacity-0 transition-all duration-300 ease-out" id="modalContent">
+<div class="flex items-center justify-between mb-xl">
+<h3 class="font-headline-h3 text-headline-h3 font-bold">Create New Club</h3>
+<button class="p-2 hover:bg-gray-100 rounded-full transition-colors" onclick="closeModal()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<form class="space-y-lg">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Club Name</label>
+<input class="w-full h-[44px] px-md py-sm border-gray-200 rounded-[6px] focus:border-primary focus:ring-0 transition-all" placeholder="e.g. University Chess League" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Category</label>
+<select class="w-full h-[44px] px-md py-sm border-gray-200 rounded-[6px] focus:border-primary focus:ring-0">
+<option>Academic</option>
+<option>Sports</option>
+<option>Arts</option>
+<option>Technology</option>
+<option>Leisure</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Privacy</label>
+<div class="flex gap-xl mt-sm">
+<label class="flex items-center gap-sm cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary w-4 h-4" name="privacy" type="radio"/>
+<span class="text-body-md">Public</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer">
+<input class="text-primary focus:ring-primary w-4 h-4" name="privacy" type="radio"/>
+<span class="text-body-md">Private</span>
+</label>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Description</label>
+<textarea class="w-full px-md py-sm border-gray-200 rounded-[6px] focus:border-primary focus:ring-0 transition-all" placeholder="Briefly describe the club's goals and activities..." rows="3"></textarea>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface mb-xs">Assign Admin</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-gray-400 text-body-md" data-icon="person_search">person_search</span>
+<input class="w-full h-[44px] px-md py-sm pl-10 border-gray-200 rounded-[6px] focus:border-primary focus:ring-0 transition-all" placeholder="Search students by name or ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md pt-md">
+<button class="flex-1 py-[10px] px-lg border border-gray-200 rounded-[6px] text-on-surface hover:bg-gray-50 transition-all" onclick="closeModal()" type="button">Cancel</button>
+<button class="flex-1 py-[10px] px-lg bg-primary text-on-primary font-bold rounded-[6px] hover:bg-gray-800 transition-all shadow-small" type="submit">Create Club</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Mobile Navigation Drawer -->
+<div class="fixed inset-0 z-[60] hidden" id="mobileDrawer">
+<div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="toggleMobileNav()"></div>
+<aside class="absolute inset-y-0 left-0 w-64 bg-surface shadow-xl flex flex-col p-lg transform -translate-x-full transition-transform duration-300 ease-out" id="drawerContent">
+<div class="mb-xl">
+<h3 class="font-headline-h3 text-headline-h3 font-black text-primary">Student Hub</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Menu</p>
+</div>
+<nav class="flex-1 space-y-md">
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container p-sm rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Clubs</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="book">book</span>
+<span class="font-label-sm text-label-sm">Courses</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<div class="mt-auto">
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-high p-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+</div>
+</aside>
+</div>
+<script>
+        function openModal() {
+            const modal = document.getElementById('createModal');
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.classList.add('opacity-100');
+                content.classList.remove('translate-y-10', 'opacity-0');
+                content.classList.add('translate-y-0', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('createModal');
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0');
+            content.classList.remove('translate-y-0', 'opacity-100');
+            content.classList.add('translate-y-10', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        function toggleMobileNav() {
+            const drawer = document.getElementById('mobileDrawer');
+            const content = document.getElementById('drawerContent');
+            
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                setTimeout(() => {
+                    content.classList.remove('-translate-x-full');
+                }, 10);
+            } else {
+                content.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+    </script>
+</body></html>

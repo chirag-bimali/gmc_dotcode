@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coding Society - Club Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fdf8f8",
+                        "on-surface-variant": "#444748",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-tint": "#5f5e5e",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-error-container": "#93000a",
+                        "primary": "#000000",
+                        "tertiary-container": "#1c1b1a",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary": "#ffffff",
+                        "error": "#EF4444",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5e5e5e",
+                        "surface-container-high": "#ebe7e6",
+                        "warning": "#F59E0B",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#1c1b1a",
+                        "primary-container": "#1c1b1b",
+                        "success": "#10B981",
+                        "surface-container-low": "#f7f3f2",
+                        "gray-400": "#A3A3A3",
+                        "gray-200": "#E5E5E5",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-container": "#f1edec",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary-fixed": "#e6e2df",
+                        "outline": "#747878",
+                        "on-primary-container": "#858383",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "info": "#3B82F6",
+                        "surface": "#fdf8f8",
+                        "surface-dim": "#ddd9d8",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary-container": "#646464",
+                        "on-tertiary-container": "#868382",
+                        "on-tertiary-fixed-variant": "#484645",
+                        "tertiary-fixed-dim": "#cac6c4",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1c1b1b",
+                        "gray-800": "#262626",
+                        "gray-100": "#F5F5F5",
+                        "on-secondary": "#ffffff",
+                        "gray-50": "#FAFAFA",
+                        "on-secondary-fixed-variant": "#464747",
+                        "tertiary": "#000000",
+                        "inverse-surface": "#313030",
+                        "secondary-container": "#e3e2e2",
+                        "secondary-fixed": "#e3e2e2",
+                        "inverse-primary": "#c8c6c5",
+                        "on-primary-fixed-variant": "#474746",
+                        "background": "#fdf8f8",
+                        "gray-300": "#D4D4D4",
+                        "outline-variant": "#c4c7c7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "16px",
+                        "max-width": "1280px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "3xl": "64px",
+                        "xs": "4px",
+                        "reading-width": "700px",
+                        "2xl": "48px",
+                        "xl": "32px",
+                        "4xl": "96px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-h3": ["Inter"],
+                        "headline-h4": ["Inter"],
+                        "headline-h1": ["Inter"],
+                        "headline-h2": ["Inter"],
+                        "display": ["Inter"],
+                        "label-sm": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+        .custom-shadow { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-lg h-16 bg-surface border-b border-gray-200">
+<div class="flex items-center gap-md">
+<span class="text-headline-h4 font-bold text-primary">StudentPortal</span>
+<div class="hidden md:flex items-center ml-lg gap-lg">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Clubs</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Events</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Resources</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm text-on-surface-variant hover:bg-gray-100 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-gray-100 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-gray-200 ml-sm">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a university student in a minimalist office setting with soft, natural lighting. The student is wearing a simple dark gray sweater. The background is a clean, white-walled academic environment with a small green plant blurred in the distance. The overall aesthetic is clean, sharp, and focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkzroMxW3zwnI75LqLZM1FYUWAWcuKBNW16e-TLAY6mNjc_zNDBETuYmEGJ-9sUc26zj7P3WN5e5LQQJQ5ctWp10h8lpQcXAaB-v7vYRjrg0s6U7NNbn5lebNFxvRL7l3PROUNa9_yHlU4F_QWozwt8xLLiD6hSve8oy9mQlN3qAjx5OHxyf8oENeiz1JWz9D2eOQUVb8eIAqrryoonWL87ayOW3OOWyrVWmJjMJVCiapmDtgEGtleNZSQoDQEIUiDF2TFxm73quM"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 bottom-0 w-64 hidden lg:flex flex-col p-md gap-sm bg-surface-container-low border-r border-gray-200">
+<div class="flex items-center gap-md mb-lg px-sm">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="terminal">terminal</span>
+</div>
+<div>
+<h2 class="font-headline-h4 text-primary font-bold">Coding Society</h2>
+<p class="text-label-sm text-on-surface-variant">Active Members: 120</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-gray-100 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm">Home</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-primary font-bold bg-gray-100 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm">My Clubs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-gray-100 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+<span class="font-label-sm">Announcements</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-gray-100 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-sm">Direct Messages</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-gray-100 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="archive">archive</span>
+<span class="font-label-sm">Archive</span>
+</a>
+</nav>
+<button class="mt-lg w-full bg-primary text-on-primary py-md rounded-lg font-label-sm hover:opacity-90 transition-opacity">
+            New Club
+        </button>
+<div class="mt-auto pt-lg flex flex-col gap-xs border-t border-gray-200">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-gray-100 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-sm">Help</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-gray-100 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="font-label-sm">Privacy</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-16 min-h-screen bg-gray-50 flex justify-center">
+<div class="w-full max-w-reading-width px-md py-xl space-y-lg">
+<!-- 1. Create Post Area (Sticky) -->
+<div class="sticky top-[72px] z-40 bg-surface border border-gray-200 rounded-xl p-md custom-shadow flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait-style profile photo of a young student with a friendly expression. The lighting is bright and airy, reflecting a modern light-mode interface design. The background is a minimalist gray gradient, keeping the focus entirely on the subject. High resolution and professional quality for a corporate portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB17Lnah189iYgxPNUf92PT0Xu6EmGTF7lMwFNU_DdjBvSl317ct_4-uG1cfKpTEEbd1Q-raMre4ExdnhMeZbr1ad-URYl-IIELx2EKvuImizE_v7xJLdY1aNL3QGRX80RF3RpRXycbgupVuT5AXpgA50hV0yPYEkYj7YG2_Nl8jyXUrAUAZdQpNGtGXPoDxKT1o2rgerJ7jTSAz3YjJOWsVAUgQX_8EpGdtCL2mgPZkCYQrigr_nRHdQLX0hOEEMrn8Ddds-wWbYw"/>
+</div>
+<input class="flex-1 bg-gray-50 border-none rounded-lg px-md py-sm focus:ring-0 text-body-md text-on-surface placeholder-gray-400" placeholder="What's on your mind?" type="text"/>
+<div class="flex items-center gap-sm">
+<button class="p-sm text-on-surface-variant hover:bg-gray-100 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="image">image</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-gray-100 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="attachment">attachment</span>
+</button>
+</div>
+</div>
+<!-- 2. Pinned Posts Section -->
+<div class="space-y-md">
+<div class="flex items-center gap-sm px-sm">
+<span class="material-symbols-outlined text-gray-400 text-sm" data-icon="push_pin" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+<h3 class="text-label-sm font-semibold uppercase tracking-wider text-gray-400">Pinned Posts</h3>
+</div>
+<!-- Announcement Post -->
+<article class="bg-surface border border-gray-200 rounded-xl p-lg custom-shadow space-y-md relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+</div>
+<div>
+<h4 class="font-headline-h4 text-primary">Upcoming Hackathon</h4>
+<p class="text-caption text-on-surface-variant">Admin • 2 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<span class="bg-primary text-on-primary text-[10px] px-sm py-[2px] rounded font-bold uppercase">Announcement</span>
+<button class="text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<p class="text-body-md text-on-surface">
+                        Get ready for the annual 'Code the Future' Hackathon! This year we're focusing on Sustainable Tech. Prize pool of $5,000 and internship opportunities with our sponsors. Registration opens next Monday.
+                    </p>
+<div class="flex items-center gap-md pt-md border-t border-gray-100">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-label-sm">48</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-sm">12</span>
+</button>
+</div>
+</article>
+</div>
+<!-- 3. Main Feed -->
+<div class="space-y-lg">
+<!-- Poll Post -->
+<article class="bg-surface border border-gray-200 rounded-xl p-lg custom-shadow space-y-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+<img class="w-full h-full object-cover" data-alt="A profile picture of a young male student, looking intellectual and professional. Minimalist lighting setup in a studio environment. Soft gray background that emphasizes the corporate modern identity. Neutral tones and clean lines dominate the image composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGrXQFX9DbojZ4v87yoEpd55lHZx9s_18Um47S8SLFr7nkc_DgQs8krHLv0bg3VBw3oGaTv0fIeYLqPLMMVfN-EEx1BqvJvxmoXBg-YWrgZrvXUu8HEudgjJGlKrOcp-vIg6tiGI_v-7DoioBBfAwIJoz1zL0tDIbLtTP0XwudpgekDqef7qcVs1yu6Sbouy1pDV_utHeb1XXinlwOwS_fL8h7aHkSaJUZWNkx0SWPUJP-DBLjQjzK5JyWSkpObom9479zdeKXNy4"/>
+</div>
+<div>
+<h4 class="text-body-lg font-semibold text-primary">Alex Chen</h4>
+<p class="text-caption text-on-surface-variant">Moderator • 5 hours ago</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<span class="border border-gray-200 text-on-surface-variant text-[10px] px-sm py-[2px] rounded font-bold uppercase">Poll</span>
+<button class="text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<p class="text-body-md font-medium text-primary">Next Workshop Topic?</p>
+<div class="space-y-sm">
+<button class="group w-full relative h-12 border border-gray-200 rounded-lg overflow-hidden flex items-center px-md hover:border-primary transition-all">
+<div class="absolute inset-0 bg-primary opacity-5 w-[65%]"></div>
+<span class="relative z-10 text-body-md font-medium flex-1 text-left">Web Development</span>
+<span class="relative z-10 text-caption text-on-surface-variant">65%</span>
+</button>
+<button class="group w-full relative h-12 border border-gray-200 rounded-lg overflow-hidden flex items-center px-md hover:border-primary transition-all">
+<div class="absolute inset-0 bg-primary opacity-5 w-[25%]"></div>
+<span class="relative z-10 text-body-md font-medium flex-1 text-left">AI &amp; Machine Learning</span>
+<span class="relative z-10 text-caption text-on-surface-variant">25%</span>
+</button>
+<button class="group w-full relative h-12 border border-gray-200 rounded-lg overflow-hidden flex items-center px-md hover:border-primary transition-all">
+<div class="absolute inset-0 bg-primary opacity-5 w-[10%]"></div>
+<span class="relative z-10 text-body-md font-medium flex-1 text-left">Cloud Computing</span>
+<span class="relative z-10 text-caption text-on-surface-variant">10%</span>
+</button>
+</div>
+<div class="flex items-center gap-md pt-md border-t border-gray-100">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="how_to_vote">how_to_vote</span>
+<span class="text-label-sm">112 Votes</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-sm">8</span>
+</button>
+</div>
+</article>
+<!-- Regular Post with Code/Image -->
+<article class="bg-surface border border-gray-200 rounded-xl p-lg custom-shadow space-y-md">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+<img class="w-full h-full object-cover" data-alt="A portrait of a young woman student, smiling warmly in a bright, modern library setting. The image uses a shallow depth of field, blurring the rows of books behind her. The lighting is natural and creates a soft, professional atmosphere. Perfect for a university student portal profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGkcwLlBLPoii6JbWwVkKMS7NPsr7F2pE6XnzStGGAWhWVpi32xcPXoGQQjF5iesdarGc_2MVo815c4MrrKtXw6D3cLFcYOxOxBwCTS9A139sfH43oL1Y2t5ssy9QJyYDwa06Ycn_6id6zzBIYhjPMZv2BXmpkSIx-KE_OPW3lHTSZLXFoTCDO3ROiZaWmgBcDD0TGHpfTDkW6uC-GaATzhh0-P2WS5uPltbHJJYu6I_fuNwYflgZFnpW4AUDepg_mRCc4glQoXRw"/>
+</div>
+<div>
+<h4 class="text-body-lg font-semibold text-primary">Sarah Williams</h4>
+<p class="text-caption text-on-surface-variant">Member • 8 hours ago</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+<p class="text-body-md text-on-surface">
+                        Finally finished my first Rust project! The memory management concepts are tough but so rewarding once you get them. Here's a snippet of the CLI tool I'm building.
+                    </p>
+<div class="rounded-lg overflow-hidden border border-gray-200">
+<img class="w-full h-48 object-cover" data-alt="A clean, high-angle shot of a minimalist workspace featuring a dark mechanical keyboard and a high-resolution laptop screen displaying elegant, lines of Rust programming code. The desk is a neutral light gray, with a small succulent in a ceramic pot and a cup of black coffee nearby. The lighting is crisp and modern, emphasizing a focused, productive atmosphere for a coder." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtYy8cQa7vkWmHbr_Ahpbu9b-7FTqTDSqQgQuU4jCZP1J1pkvRpO0emvjta-_ypM9Ln9LRrN7pPcR4rFHKSXHYDXlwFBK4zfjFQ8P37bnI0x39yTry3TdOYgILQ1jEiDFf6tsiSVtIFQgo8gcWkq7Cs-jgu00UTA3GtV9ZSdXEQtJxh0UKiNg_7QQHo9v9ikrKri4fioy2vm8oFLSmkDegG9krN5UIV45KAgZxz7qlGzD0m-0WCX3lEG2gqjff1LZ6DzymkFP0TFQ"/>
+</div>
+<div class="flex items-center gap-md pt-sm">
+<button class="flex items-center gap-xs text-primary font-medium transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-label-sm">32</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-sm">5</span>
+</button>
+</div>
+<!-- 4. Expanded Comments Section -->
+<div class="mt-lg pt-md border-t border-gray-100 space-y-md">
+<div class="space-y-md">
+<!-- Parent Comment -->
+<div class="flex gap-md">
+<div class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up photo of a young male student with glasses, smiling confidently. Soft studio lighting on a neutral white backdrop. High-end portraiture style, consistent with a modern corporate or academic digital platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUV6MhDTZ4N-V2LC2YjDKEH3F_AgbBoYqrC0zenJEYQZhdDT6imOop4MCBicQXmzPkLXo5YA9a5gwh41aZNqGGuGnRuTsKsV6CNFjvLJOQwwwYirBoUDB3WgpoYvPQtLU7clUab4kmpx6f2dCFAa5f_ijFIyYFUCcNtH0YQ4w1yiUi81hcbcpK7FfTenKg4KZZtrQu0BAtgl4xLRWHACcO4EfgGG85f38dJM1fZ1Uziqgv9PJJ7XgKQRvMxRVad6NfNtj0CAA2Mms"/>
+</div>
+<div class="flex-1 space-y-xs">
+<div class="bg-gray-50 rounded-lg p-sm">
+<p class="text-label-sm font-bold text-primary">David Kim</p>
+<p class="text-body-md text-on-surface-variant">Great work! Are you planning to make the repository public?</p>
+</div>
+<div class="flex items-center gap-md px-sm">
+<button class="text-caption font-medium hover:underline">Like</button>
+<button class="text-caption font-medium hover:underline">Reply</button>
+<span class="text-caption text-gray-400">2h ago</span>
+</div>
+<!-- Nested Comment -->
+<div class="flex gap-md mt-sm ml-lg">
+<div class="w-6 h-6 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female university student in a bright setting. Clean minimalist background, soft natural lighting, high resolution quality suitable for a modern educational UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKUkb-qqdPfn3FrWKU_kFy2semNe2qt1Jigs5h2mrpNUnE0vPrL1099dsfyfe4ErwDTIZ-wKIO_MTpWYL-xo5yVODILp4IHd7n_nwTiiwR5kKH8QQjiSPyRraVJkIEwttkce0a9wk8MuzcVwt_LOB1NQBcsq2rKghvdtfcPbYRIaaY5T6d0VtmO5NCbwqhtN9QJbxYfsDMOa3p5GEWK838UReUbEBi5RNqa0rEN54h6ZgNaPb6sqrr0QxxC07uOXiOtnRDl-yGxa8"/>
+</div>
+<div class="flex-1 space-y-xs">
+<div class="bg-gray-50 rounded-lg p-sm">
+<p class="text-label-sm font-bold text-primary">Sarah Williams</p>
+<p class="text-body-md text-on-surface-variant">Yes! Just cleaning up the documentation first.</p>
+</div>
+<div class="flex items-center gap-md px-sm">
+<button class="text-caption font-medium hover:underline">Like</button>
+<button class="text-caption font-medium hover:underline">Reply</button>
+<span class="text-caption text-gray-400">1h ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Comment Input -->
+<div class="flex items-center gap-md pt-sm">
+<div class="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Detailed portrait of a student in light mode aesthetic, clean and professional. Minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoRUXw5Bg3Cnjm2B2Hl1yGe4D69TQg-OaB-LmfNEjXuuRjuBET0_Qe-cCpLJ5411lo6JnQTTA3nJddCOQkwS8tuAmrGMbW_8rCND4nytoLp-Hx5ebOzZP-1YSkjAN-1yjOh90KP4Dw9v8KC-teD6XOprLZccMB6TrP9m96ZHd4OUzVks17z-S50UQ2_jqzcX8HnT0tYw32EEVQrSCHOWzTUJQ1X1smUg7Av-rAGvXG3U9RBrGZqOAUbfd3pcxtLfsSVyOBfkxvfgs"/>
+</div>
+<div class="flex-1 relative">
+<input class="w-full bg-gray-50 border border-gray-200 rounded-full px-md py-sm text-body-md focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Write a comment..." type="text"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined text-md" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Load More Indicator -->
+<div class="flex justify-center py-xl">
+<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for vote buttons
+        document.querySelectorAll('button.group').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('border-primary');
+                this.querySelector('.bg-primary').classList.toggle('opacity-20');
+                this.querySelector('.bg-primary').classList.toggle('opacity-5');
+            });
+        });
+
+        // Search bar interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        if(searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('ring-1', 'ring-primary');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('ring-1', 'ring-primary');
+            });
+        }
+    </script>
+</body></html>
