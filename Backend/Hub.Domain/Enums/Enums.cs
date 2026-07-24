@@ -15,69 +15,16 @@ public enum UserStatus
     Disabled
 }
 
-public enum ClubPrivacy
-{
-    Public,
-    Private
-}
-
-public enum MembershipRole
-{
-    Member,
-    Admin
-}
-
-public enum MembershipStatus
-{
-    Pending,
-    Approved,
-    Rejected
-}
-
 public enum PostType
 {
-    Text,
-    Image,
-    Announcement,
-    Poll
+    Doubt,
+    Resource,
+    Info
 }
 
-public enum RsvpStatus
+public enum PostStatus
 {
-    Going,
-    Interested,
-    NotGoing
-}
-
-public enum NotificationType
-{
-    Like,
-    Comment,
-    Event,
-    Announcement,
-    Membership
-}
-
-public enum ReferenceType
-{
-    Post,
-    Comment,
-    Event,
-    Club,
-    Membership
-}
-
-public enum ReportTargetType
-{
-    Post,
-    Comment,
-    User
-}
-
-public enum ReportStatus
-{
-    Pending,
-    Reviewed,
-    Resolved,
-    Dismissed
+    Open,
+    Closed,
+    Resolved
 }
