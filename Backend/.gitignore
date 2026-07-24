@@ -1,0 +1,16 @@
+# .NET build outputs
+**/obj/
+**/bin/
+**/Debug/
+**/Release/
+
+# User-specific files
+*.exe
+*.dll
+*.suo
+*.user
+*.userosscache
+
+# Visual Studio
+.vs/
+_ReSharper.Cache/
