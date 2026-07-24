@@ -20,10 +20,7 @@ namespace Hub.Domain.Entities
         public DateTime UpdatedAt { get; set; }
 
         // Navigation
-        public virtual ICollection<Faculty>? Faculties { get; set; }
-        public virtual ICollection<Batch>? Batches { get; set; }
-        public virtual ICollection<User>? Users { get; set; }
         public virtual ICollection<Club>? Clubs { get; set; }
-        public virtual ICollection<Invitation>? Invitations { get; set; }
+        public virtual ICollection<User>? Users { get; set; }
     }
 }
