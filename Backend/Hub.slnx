@@ -3,4 +3,5 @@
   <Project Path="Hub.Application/Hub.Application.csproj" />
   <Project Path="Hub.Domain/Hub.Domain.csproj" />
   <Project Path="Hub.Infrastructure/Hub.Infrastructure.csproj" />
+  <Project Path="Hub.Tests/Hub.Tests.csproj" />
 </Solution>

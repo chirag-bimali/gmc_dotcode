@@ -11,6 +11,8 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<User> Users => Set<User>();
+    public DbSet<Post> Posts => Set<Post>();
+    public DbSet<PostAttachment> PostAttachments => Set<PostAttachment>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
