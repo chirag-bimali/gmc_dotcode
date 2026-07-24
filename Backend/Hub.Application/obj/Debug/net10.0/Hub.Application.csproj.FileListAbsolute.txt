@@ -1,0 +1,16 @@
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/bin/Debug/net10.0/Hub.Application.deps.json
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/bin/Debug/net10.0/Hub.Application.dll
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/bin/Debug/net10.0/Hub.Application.pdb
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/bin/Debug/net10.0/Hub.Domain.dll
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/bin/Debug/net10.0/Hub.Domain.pdb
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Application.csproj.AssemblyReference.cache
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Application.AssemblyInfoInputs.cache
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Application.AssemblyInfo.cs
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Application.csproj.CoreCompileInputs.cache
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Application.sourcelink.json
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Appl.D9C301B3.Up2Date
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Application.dll
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/refint/Hub.Application.dll
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/Hub.Application.pdb
+/Users/szn/Hackathone/gmc_dotcode/Backend/Hub.Application/obj/Debug/net10.0/ref/Hub.Application.dll
