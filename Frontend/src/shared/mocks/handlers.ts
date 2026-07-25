@@ -1,4 +1,5 @@
 import { http, HttpResponse, delay } from "msw";
+import type { AdminClubListItem } from "@features/admin/api/clubs";
 import type { ApiResponse } from "@shared/model/ApiResponse";
 import { env } from "@shared/config/env";
 
@@ -24,6 +25,73 @@ function apiError(message: string, statusCode: number, error?: ApiResponse<never
     error,
   };
 }
+
+const adminClubs: AdminClubListItem[] = [
+  {
+    id: "club_001",
+    name: "Dev Collective",
+    category: "Technology",
+    status: "active" as const,
+    memberCount: 412,
+    visibility: "Public" as const,
+    eventCount: 12,
+    manager: "Alex Chen",
+    icon: "code",
+  },
+  {
+    id: "club_002",
+    name: "Fine Arts Soc",
+    category: "Arts",
+    status: "pending" as const,
+    memberCount: 24,
+    visibility: "Private" as const,
+    eventCount: 0,
+    manager: "Sarah Jenkins",
+    icon: "sparkle",
+  },
+  {
+    id: "club_003",
+    name: "Retro Gaming",
+    category: "Leisure",
+    status: "archived" as const,
+    memberCount: 156,
+    visibility: "Public" as const,
+    eventCount: 0,
+    manager: "Marcus Thorne",
+    icon: "archive",
+  },
+  {
+    id: "club_004",
+    name: "Powerlift Club",
+    category: "Sports",
+    status: "active" as const,
+    memberCount: 89,
+    visibility: "Public" as const,
+    eventCount: 4,
+    manager: "Diana Prince",
+    icon: "dumbbell",
+  },
+  {
+    id: "club_005",
+    name: "Drama Guild",
+    category: "Arts",
+    status: "active" as const,
+    memberCount: 210,
+    visibility: "Public" as const,
+    eventCount: 8,
+    manager: "Leo Banks",
+    icon: "theater",
+  },
+];
+
+const adminClubStats = {
+  total: 24,
+  pendingReview: 5,
+  activeEvents: 18,
+  verified: 19,
+};
+
+let adminClubSeed = adminClubs.length;
 
 export const handlers = [
   http.get(`${BASE_URL}/health`, () => {
@@ -546,5 +614,93 @@ export const handlers = [
     }
 
     return HttpResponse.json(apiResponse({ id: "s_new_001" }));
+  }),
+
+  http.get(`${BASE_URL}/admin/clubs`, async ({ request }) => {
+    await delay(350);
+
+    const url = new URL(request.url);
+    const search = url.searchParams.get("search")?.toLowerCase() ?? "";
+    const category = url.searchParams.get("category")?.toLowerCase() ?? "";
+    const status = url.searchParams.get("status")?.toLowerCase() ?? "";
+
+    let filtered = adminClubs;
+
+    if (search) {
+      filtered = filtered.filter(
+        (club) =>
+          club.name.toLowerCase().includes(search) ||
+          club.category.toLowerCase().includes(search) ||
+          club.manager.toLowerCase().includes(search),
+      );
+    }
+
+    if (category && category !== "all categories") {
+      filtered = filtered.filter((club) => club.category.toLowerCase() === category);
+    }
+
+    if (status && status !== "all statuses") {
+      filtered = filtered.filter((club) => club.status === status);
+    }
+
+    return HttpResponse.json(apiResponse(filtered));
+  }),
+
+  http.get(`${BASE_URL}/admin/clubs/stats`, async () => {
+    await delay(200);
+
+    return HttpResponse.json(
+      apiResponse(adminClubStats),
+    );
+  }),
+  http.post(`${BASE_URL}/admin/clubs`, async ({ request }) => {
+    await delay(400);
+
+    const body = (await request.json()) as {
+      name?: string;
+      category?: string;
+      status?: "active" | "pending" | "archived";
+      visibility?: "Public" | "Private";
+      description?: string;
+      manager?: string;
+      icon?: string;
+    };
+
+    if (!body.name || !body.category || !body.status || !body.visibility || !body.description || !body.manager || !body.icon) {
+      return HttpResponse.json(
+        apiError("Validation failed", 422, {
+          details: {
+            name: !body.name ? ["Club name is required"] : [],
+            category: !body.category ? ["Category is required"] : [],
+            status: !body.status ? ["Status is required"] : [],
+            visibility: !body.visibility ? ["Visibility is required"] : [],
+            description: !body.description ? ["Description is required"] : [],
+            manager: !body.manager ? ["Manager is required"] : [],
+            icon: !body.icon ? ["Icon is required"] : [],
+          },
+        }),
+        { status: 422 },
+      );
+    }
+
+    const created = {
+      id: `club_${String(++adminClubSeed).padStart(3, "0")}`,
+      name: body.name,
+      category: body.category,
+      status: body.status,
+      memberCount: 0,
+      visibility: body.visibility,
+      eventCount: 0,
+      manager: body.manager,
+      icon: body.icon,
+    };
+
+    adminClubs.unshift(created);
+    adminClubStats.total += 1;
+    if (body.status === "pending") {
+      adminClubStats.pendingReview += 1;
+    }
+
+    return HttpResponse.json(apiResponse(created), { status: 201 });
   }),
 ];
