@@ -30,6 +30,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUniversityRepository, UniversityRepository>();
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
 builder.Services.AddScoped<IMembershipRepository, MembershipRepository>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ILikeRepository, LikeRepository>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<AuthService>();
@@ -39,6 +42,13 @@ builder.Services.AddScoped<IClubService, ClubService>();
 builder.Services.AddScoped<ClubService>();
 builder.Services.AddScoped<IMembershipService, MembershipService>();
 builder.Services.AddScoped<MembershipService>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<PostService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<CommentService>();
+builder.Services.AddScoped<ILikeService, LikeService>();
+builder.Services.AddScoped<LikeService>();
+builder.Services.AddScoped<IClubInternalApi, Hub.Application.Services.ClubInternalApi>();
 
 var app = builder.Build();
 
