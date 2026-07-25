@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,20 +15,15 @@ namespace Hub.Domain.Entities
         public virtual Post? Post { get; set; }
 
         [Required]
-        public Guid AuthorId { get; set; }
-        [ForeignKey(nameof(AuthorId))]
-        public virtual User? Author { get; set; }
+        public Guid UserId { get; set; }
+        [ForeignKey(nameof(UserId))]
+        public virtual User? User { get; set; }
 
-        public Guid? ParentId { get; set; }
-        [ForeignKey(nameof(ParentId))]
-        public virtual Comment? Parent { get; set; }
+        [Required]
+        public string Text { get; set; } = string.Empty;
 
-        public string? Content { get; set; }
+        public bool IsBestAnswer { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-
-        // Navigation
-        public virtual ICollection<Comment>? Replies { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
