@@ -79,7 +79,7 @@ export function LandingPage() {
         </div>
         <Link
           to="/login"
-          className="px-4 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
+          className="px-4 py-2.5 bg-neutral-900 text-white! text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
         >
           Login
         </Link>
@@ -100,7 +100,7 @@ export function LandingPage() {
             <div className="flex gap-4 justify-center">
               <Link
                 to="/login"
-                className="px-8 py-3 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all"
+                className="px-8 py-3 bg-neutral-900 text-white! text-sm font-medium rounded-lg hover:shadow-lg transition-all"
               >
                 Get Started
               </Link>
