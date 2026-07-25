@@ -2,7 +2,6 @@ import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard,
   Compass,
-  Users,
   CalendarDays,
   Bell,
   UserCircle,
@@ -22,7 +21,6 @@ export type SidebarItem = {
 export const mainNavItems: SidebarItem[] = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { label: "Discover Clubs", href: "/clubs", icon: Compass },
-  { label: "My Clubs", href: "/my-clubs", icon: Users },
   { label: "Events", href: "/events", icon: CalendarDays },
   { label: "Notifications", href: "/notifications", icon: Bell },
   { label: "Profile", href: "/profile", icon: UserCircle },
